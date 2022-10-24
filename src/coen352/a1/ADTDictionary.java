@@ -6,8 +6,7 @@
 
 /** The Dictionary abstract class. */
 
-package Question3; 
-
+package coen352.a1;
 
 public interface ADTDictionary<K, E> {
 
@@ -21,7 +20,7 @@ public interface ADTDictionary<K, E> {
 
   /** Remove and return a record.
       @param k The key of the record to be removed.
-      @return A maching record. If multiple records match
+      @return A matching record. If multiple records match
       "k", remove an arbitrary one. Return null if no record
       with key "k" exists. */
   public E remove(K k);
