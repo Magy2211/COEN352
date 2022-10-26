@@ -128,7 +128,13 @@ public class Linked_List_Dictionary<Key,E> implements ADTDictionary<Key,E>
 		
 		E [] Temp;
 		
+		int i;
+		for(i=1; i <= V_list.length(); i++)
+		{
+			Temp[i-1] = (V_list.getValue()).
+		}
 		
+		)
 		return Temp;
 	}
 
