@@ -24,6 +24,12 @@ public interface ADTDictionary<K, E> {
       "k", remove an arbitrary one. Return null if no record
       with key "k" exists. */
   public E remove(K k);
+  
+  /** adding a new function to create an index. 
+   * the function takes the attribute as input and return the element 
+   */ 
+  
+  public E[] createIndex(String attribute); 
 
   /** Remove and return an arbitrary record from dictionary.
       @return the record removed, or null if none exists. */
