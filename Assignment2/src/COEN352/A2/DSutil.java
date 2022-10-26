@@ -7,7 +7,7 @@ package COEN352.A2;
 
 import java.util.*;
 import java.math.*;
-import coen352.ch4.list.*;
+import COEN352.A2.ADTList;
 
 /** A bunch of utility functions. */
 public class DSutil<E> {
@@ -28,14 +28,14 @@ public class DSutil<E> {
 		  
 		  int curr = list.currPos();
 		  
-		  E temp1 = list.getValue(p1);
-		  E temp2 = list.getValue(p2);
+		  E temp1 = list.getValue();
+		  E temp2 = list.getValue();
 		  
 		  list.moveToPos(p1);
-		  list.setValue(temp2);
+		  list.insert(temp2);
 		  
 		  list.moveToPos(p2);
-		  list.setValue(temp1);
+		  list.insert(temp1);
 		
 		  list.moveToPos(curr);
 		 
