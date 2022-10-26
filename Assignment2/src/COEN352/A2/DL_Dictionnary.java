@@ -3,8 +3,7 @@
 // Assignment 1 Q3: implementing a Double linked list to the dictionary class
 
 
-package coen352.a1;
-
+package COEN352.A2
 public class DL_Dictionnary<Key, E> implements ADTDictionary<Key, E>{
 
 	

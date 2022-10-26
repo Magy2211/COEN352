@@ -3,7 +3,7 @@
 // Assignment 1 Q1: implementing a linked list to the dictionary class 
 
 
-package coen352.a1;
+package COEN352.A2;
 
 public class Linked_List_Dictionary<Key,E> implements ADTDictionary<Key,E> 
 

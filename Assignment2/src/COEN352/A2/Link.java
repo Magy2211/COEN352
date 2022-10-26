@@ -1,4 +1,4 @@
-package coen352.a1;
+package COEN352.A2;
 
 /** Singly linked list node */
 class Link<E> {

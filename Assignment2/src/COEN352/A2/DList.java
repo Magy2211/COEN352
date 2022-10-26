@@ -1,4 +1,4 @@
-package coen352.a1;
+packageCOEN352.A2;
 
 /** Source code example for "A Practical Introduction to Data
 Structures and Algorithm Analysis, 3rd Edition (Java)" 

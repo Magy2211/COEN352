@@ -2,7 +2,7 @@
 
 
 
-package coen352.a1;
+package COEN352.A2;
 
 
 public class Inventory {
