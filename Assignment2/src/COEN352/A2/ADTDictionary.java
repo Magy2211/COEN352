@@ -6,7 +6,7 @@
 
 /** The Dictionary abstract class. */
 
-package coen352.a1;
+package COEN352.A2; 
 
 public interface ADTDictionary<K, E> {
 

@@ -1,4 +1,4 @@
-package coen352.a1;
+package COEN352.A2;
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;

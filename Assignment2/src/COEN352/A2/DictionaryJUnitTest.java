@@ -1,4 +1,4 @@
-package coen352.a1;
+package COEN352.A2;
 
 import static org.junit.jupiter.api.Assertions.*;
 

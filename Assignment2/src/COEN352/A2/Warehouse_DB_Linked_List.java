@@ -3,7 +3,7 @@
 // Assignment 1 Q5 Part 2) implementing the warehouse class to execute the inventory functions 
 
 
-package coen352.a1;
+package COEN352.A2;
 
 public class Warehouse_DB_Linked_List 
 
