@@ -1,4 +1,4 @@
-package coen352.ch07;
+package COEN352.A2;
 
 public class QuickSort {
 	
