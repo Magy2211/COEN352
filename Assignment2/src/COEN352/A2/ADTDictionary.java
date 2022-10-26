@@ -26,9 +26,8 @@ public interface ADTDictionary<K, E> {
   public E remove(K k);
   
   /** adding a new function to create an index. 
-   * the function takes the attribute as input and return the element 
+    the function takes the attribute as input and return the element in the dictionary 
    */ 
-  
   public E[] createIndex(String attribute); 
 
   /** Remove and return an arbitrary record from dictionary.
