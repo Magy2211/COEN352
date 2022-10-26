@@ -1,5 +1,6 @@
 package COEN352.A2;
 
+
 public class QuickSort {
 	
 	public static <E extends Comparable<? super E>> void sort(E[] A) {

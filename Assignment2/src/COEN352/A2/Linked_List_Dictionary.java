@@ -131,21 +131,6 @@ public class Linked_List_Dictionary<Key,E> implements ADTDictionary<Key,E>
 		
 		return Temp;
 	}
-	
-	static <E extends Comparable<? super E>>
-	void qsort(E[] A, int i, int j) {
-	  int pivotindex = findpivot(A, i, j);
-	  DSutil.swap(A, pivotindex, j);
-	  // k will be first position in right subarray
-	  int k = partition(A, i-1, j, A[j]);
-	  DSutil.swap(A, k, j);
-	  if ((k-i) > 1) qsort(A, i, k-1);
-	  if ((j-k) > 1) qsort(A, k+1, j);
-	}
-
-	static <E extends Comparable<? super E>>
-	int findpivot(E[] A, int i, int j)
-	  { return (i+j)/2; }
 
 	
 };
