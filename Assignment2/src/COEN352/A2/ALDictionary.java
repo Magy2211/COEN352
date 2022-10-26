@@ -2,8 +2,8 @@ package COEN352.A2;
 
 import org.junit.jupiter.api.Test;
 
-import coen352.ch4.list.ADTList;
-import coen352.ch4.list.AList;
+import COEN352.A2.ADTList;
+import COEN352.A2.LList;
 
 /** Source code example for "A Practical Introduction to Data
 Structures and Algorithm Analysis, 3rd Edition (Java)" 
@@ -19,8 +19,8 @@ public class ALDictionary<Key, E> implements ADTDictionary<Key, E> {
 	private static final int defaultSize = 100; // Default size
 
 	
-	private AList<Key> klist; 
-	private AList<E> vlist; 
+	private LList<Key> klist; 
+	private LList<E> vlist; 
 	
 	private int[] index = null; 
 
@@ -30,8 +30,8 @@ public class ALDictionary<Key, E> implements ADTDictionary<Key, E> {
 	}
 	
 	ALDictionary(int sz){ 
-		klist = new AList<Key>(sz); 
-		vlist = new AList<E>(sz);
+		klist = new LList<Key>(sz); 
+		vlist = new LList<E>(sz);
 	}
 	
 	/** Reinitialize */
