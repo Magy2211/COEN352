@@ -4,6 +4,8 @@
 
 
 package COEN352.A2;
+import COEN352.A2.QuickSort;
+
 
 public class Warehouse_DB_Linked_List 
 
@@ -312,6 +314,83 @@ public class Warehouse_DB_Linked_List
 	    }
 	    else System.out.println("The record was not found in the inventory.");
 	    
+	}
+	
+	public int[] CreateIndex(String Attribute) {
+		
+		int[] Temp = null; 
+		String [] AttributeCopy = null; 
+		String [] AttributeCopyUnsorted = null;
+		for(int i=0; i<= warehouse.size()-1; i++)
+		{
+			switch(Attribute)
+			{
+				case "SKU":
+					AttributeCopy[i] = (warehouse.getV_list())[i].getSKU();
+					AttributeCopyUnsorted[i] = (warehouse.getV_list())[i].getSKU();
+					break;
+				case "Description":
+					AttributeCopy[i] = (warehouse.getV_list())[i].getDescription();
+					AttributeCopyUnsorted[i] = (warehouse.getV_list())[i].getDescription();
+					break;
+					
+				case "BinNum":
+					AttributeCopy[i] = (warehouse.getV_list())[i].getBinNUM();
+					AttributeCopyUnsorted[i] = (warehouse.getV_list())[i].getBinNUM();
+					break;
+				case "Location":
+					AttributeCopy[i] = (warehouse.getV_list())[i].getLocation();
+					AttributeCopyUnsorted[i] = (warehouse.getV_list())[i].getLocation();
+					break;
+				case "Unit": 
+					AttributeCopy[i] = (warehouse.getV_list())[i].getUnit();
+					AttributeCopyUnsorted[i] = (warehouse.getV_list())[i].getUnit();
+					break;
+				
+				case "Quantity":
+					AttributeCopy[i] = Integer.toString((warehouse.getV_list())[i].getQuantity());
+					AttributeCopyUnsorted[i] = Integer.toString((warehouse.getV_list())[i].getQuantity());
+					break;
+					
+				case "ReorderQuantity":
+					AttributeCopy[i] = Integer.toString((warehouse.getV_list())[i].getReorderQuantity());
+					AttributeCopyUnsorted[i] = Integer.toString((warehouse.getV_list())[i].getReorderQuantity());
+					break;
+				
+				case "Cost": 
+					AttributeCopy[i] = Double.toString((warehouse.getV_list())[i].getCost());
+					AttributeCopyUnsorted[i] = Double.toString((warehouse.getV_list())[i].getCost());
+					break;
+					
+				case "InventoryValue":
+					AttributeCopy[i] = Double.toString((warehouse.getV_list())[i].getInventoryValue());
+					AttributeCopyUnsorted[i] = Double.toString((warehouse.getV_list())[i].getInventoryValue());
+					break;
+					
+				case "Reorder":
+					AttributeCopy[i] = Boolean.toString((warehouse.getV_list())[i].getReorder());
+					AttributeCopyUnsorted[i] = Boolean.toString((warehouse.getV_list())[i].getReorder());
+					break;
+					
+				default:
+					System.out.println("Invalid attribute!");
+					
+			}
+		}
+			
+			QuickSort.qsort(AttributeCopy, 0, (AttributeCopy.length-1)); 
+			int count = 0; 
+			for(int j=0; j<=(AttributeCopy.length-1); j++) {
+				
+				for(int k=0; k<=(AttributeCopyUnsorted.length-1);k++) {
+					if(AttributeCopy[j] == AttributeCopyUnsorted[k]) {
+						Temp[count] = j;
+						count++;
+					}
+				}
+			}
+		
+		return Temp; 
 	}
 	
 }

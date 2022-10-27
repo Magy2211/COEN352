@@ -30,6 +30,19 @@ public class Linked_List_Dictionary<Key,E> implements ADTDictionary<Key,E>
 		V_list.clear();
 		
 	}
+	public E[] getV_list() {
+		
+		E [] Temp = null;
+		V_list.moveToStart();
+		
+		for(int i=0; i<=V_list.length()-1;i++) {
+			
+			Temp[i] = V_list.getValue();
+			V_list.moveToPos(i++);
+		}
+		
+		return Temp; 
+	}
 
 	/** Insert a record
     @param  k The key for the record being inserted.
@@ -122,21 +135,5 @@ public class Linked_List_Dictionary<Key,E> implements ADTDictionary<Key,E>
 	{
 		return K_list.length();
 	}
-
-	@Override
-	public E[] createIndex(String attribute) {
-		
-		E [] Temp;
-		
-		int i;
-		for(i=1; i <= V_list.length(); i++)
-		{
-			Temp[i-1] = (V_list.getValue()).
-		}
-		
-		)
-		return Temp;
-	}
-
 	
 };
