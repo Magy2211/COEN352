@@ -4,6 +4,8 @@
 
 
 package COEN352.A2;
+import java.util.Arrays;
+
 import COEN352.A2.QuickSort;
 
 
@@ -200,12 +202,15 @@ public class Warehouse_DB_Linked_List
 				warehouseDb.InsertRecord(inventory_8);
 				warehouseDb.InsertRecord(inventory_9);
 				warehouseDb.InsertRecord(inventory_11);
-					
+				
 				System.out.println("Results: ");
 				// Verifying the total number and value of the added items in the database 
-				warehouseDb.TotalInventoryQuantity();
-				warehouseDb.TotalInventoryValue() ;
+				System.out.println(warehouseDb.TotalInventoryQuantity());
+				warehouseDb.TotalInventoryValue();
 				System.out.println("-------------------------------------------------------------------------- ");
+				
+				
+				System.out.println(Arrays.toString(warehouseDb.CreateIndex("Quantity")));
 				
 				
 				// Testing if the insert function functions 
@@ -237,11 +242,15 @@ public class Warehouse_DB_Linked_List
 				warehouseDb.TotalInventoryQuantity();
 				warehouseDb.TotalInventoryValue() ; 
 				System.out.println("-------------------------------------------------------------------------- ");
+				
+				
+				
+				
 			
 	}
 	// creating the database Variables 
-	private double inventoryTotalValue = 0; // will help in calculating total cost of the inventory
-	private double inventory_number_of_entries = 0; // will help in calculating total value of the inventory
+	private double inventoryTotalValue; // will help in calculating total cost of the inventory
+	private int inventory_number_of_entries; // will help in calculating total value of the inventory
 	
 	private Linked_List_Dictionary<String,Inventory> warehouse;
 	
@@ -249,7 +258,10 @@ public class Warehouse_DB_Linked_List
 	// constructor 
 	 Warehouse_DB_Linked_List()
 	{
-		warehouse = new Linked_List_Dictionary<String, Inventory>();                             
+		warehouse = new Linked_List_Dictionary<String, Inventory>();      
+		inventoryTotalValue = 0.0;
+		inventory_number_of_entries = 0;
+		
 	}
 	
 // inserting a record 
@@ -288,9 +300,10 @@ public class Warehouse_DB_Linked_List
 	
 	// finding the total number of inventories 
 	
-	public void TotalInventoryQuantity() 
+	public int TotalInventoryQuantity() 
 	{
-		System.out.println("There are " + inventory_number_of_entries + " inventories in this database.");
+		//System.out.println("There are " + inventory_number_of_entries + " inventories in this database.");
+		return inventory_number_of_entries;
 		
 	}
 
@@ -318,58 +331,58 @@ public class Warehouse_DB_Linked_List
 	
 	public int[] CreateIndex(String Attribute) {
 		
-		int[] Temp = null; 
-		String [] AttributeCopy = null; 
-		String [] AttributeCopyUnsorted = null;
-		for(int i=0; i<= warehouse.size()-1; i++)
+		int[] Temp = new int[this.TotalInventoryQuantity()]; 
+		String [] AttributeCopy = new String[this.TotalInventoryQuantity()];
+		String [] AttributeCopyUnsorted = new String[this.TotalInventoryQuantity()];
+		for(int i=0; i<= this.warehouse.size()-1; i++)
 		{
 			switch(Attribute)
 			{
 				case "SKU":
-					AttributeCopy[i] = (warehouse.getV_list())[i].getSKU();
-					AttributeCopyUnsorted[i] = (warehouse.getV_list())[i].getSKU();
+					AttributeCopy[i] = (this.warehouse.getV_list())[i].getSKU();
+					AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getSKU();
 					break;
 				case "Description":
-					AttributeCopy[i] = (warehouse.getV_list())[i].getDescription();
-					AttributeCopyUnsorted[i] = (warehouse.getV_list())[i].getDescription();
+					AttributeCopy[i] = (this.warehouse.getV_list())[i].getDescription();
+					AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getDescription();
 					break;
 					
 				case "BinNum":
-					AttributeCopy[i] = (warehouse.getV_list())[i].getBinNUM();
-					AttributeCopyUnsorted[i] = (warehouse.getV_list())[i].getBinNUM();
+					AttributeCopy[i] = (this.warehouse.getV_list())[i].getBinNUM();
+					AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getBinNUM();
 					break;
 				case "Location":
-					AttributeCopy[i] = (warehouse.getV_list())[i].getLocation();
-					AttributeCopyUnsorted[i] = (warehouse.getV_list())[i].getLocation();
+					AttributeCopy[i] = (this.warehouse.getV_list())[i].getLocation();
+					AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getLocation();
 					break;
 				case "Unit": 
-					AttributeCopy[i] = (warehouse.getV_list())[i].getUnit();
-					AttributeCopyUnsorted[i] = (warehouse.getV_list())[i].getUnit();
+					AttributeCopy[i] = (this.warehouse.getV_list())[i].getUnit();
+					AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getUnit();
 					break;
 				
 				case "Quantity":
-					AttributeCopy[i] = Integer.toString((warehouse.getV_list())[i].getQuantity());
-					AttributeCopyUnsorted[i] = Integer.toString((warehouse.getV_list())[i].getQuantity());
+					AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantity());
+					AttributeCopyUnsorted[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantity());
 					break;
 					
 				case "ReorderQuantity":
-					AttributeCopy[i] = Integer.toString((warehouse.getV_list())[i].getReorderQuantity());
-					AttributeCopyUnsorted[i] = Integer.toString((warehouse.getV_list())[i].getReorderQuantity());
+					AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getReorderQuantity());
+					AttributeCopyUnsorted[i] = Integer.toString((this.warehouse.getV_list())[i].getReorderQuantity());
 					break;
 				
 				case "Cost": 
-					AttributeCopy[i] = Double.toString((warehouse.getV_list())[i].getCost());
-					AttributeCopyUnsorted[i] = Double.toString((warehouse.getV_list())[i].getCost());
+					AttributeCopy[i] = Double.toString((this.warehouse.getV_list())[i].getCost());
+					AttributeCopyUnsorted[i] = Double.toString((this.warehouse.getV_list())[i].getCost());
 					break;
 					
 				case "InventoryValue":
-					AttributeCopy[i] = Double.toString((warehouse.getV_list())[i].getInventoryValue());
-					AttributeCopyUnsorted[i] = Double.toString((warehouse.getV_list())[i].getInventoryValue());
+					AttributeCopy[i] = Double.toString((this.warehouse.getV_list())[i].getInventoryValue());
+					AttributeCopyUnsorted[i] = Double.toString((this.warehouse.getV_list())[i].getInventoryValue());
 					break;
 					
 				case "Reorder":
-					AttributeCopy[i] = Boolean.toString((warehouse.getV_list())[i].getReorder());
-					AttributeCopyUnsorted[i] = Boolean.toString((warehouse.getV_list())[i].getReorder());
+					AttributeCopy[i] = Boolean.toString((this.warehouse.getV_list())[i].getReorder());
+					AttributeCopyUnsorted[i] = Boolean.toString((this.warehouse.getV_list())[i].getReorder());
 					break;
 					
 				default:
@@ -378,11 +391,11 @@ public class Warehouse_DB_Linked_List
 			}
 		}
 			
-			QuickSort.qsort(AttributeCopy, 0, (AttributeCopy.length-1)); 
+			QuickSort.qsort(AttributeCopy, 0, this.TotalInventoryQuantity()); 
 			int count = 0; 
-			for(int j=0; j<=(AttributeCopy.length-1); j++) {
+			for(int j=0; j<=this.TotalInventoryQuantity(); j++) {
 				
-				for(int k=0; k<=(AttributeCopyUnsorted.length-1);k++) {
+				for(int k=0; k<=this.TotalInventoryQuantity();k++) {
 					if(AttributeCopy[j] == AttributeCopyUnsorted[k]) {
 						Temp[count] = j;
 						count++;

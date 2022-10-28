@@ -32,7 +32,7 @@ public class Linked_List_Dictionary<Key,E> implements ADTDictionary<Key,E>
 	}
 	public E[] getV_list() {
 		
-		E [] Temp = null;
+		E [] Temp = new E[];
 		V_list.moveToStart();
 		
 		for(int i=0; i<=V_list.length()-1;i++) {
