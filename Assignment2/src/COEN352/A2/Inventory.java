@@ -1,4 +1,7 @@
+// Irakiza Dushime Chris 
+// Magy Gerges 
 
+// Inventory class  
 
 package COEN352.A2;
 
@@ -16,7 +19,9 @@ public class Inventory {
 	private Integer QuantityInReorder;
 	private Boolean Discontinued; 
 	
-	Inventory(){
+	// default constructor
+	Inventory()
+	{
 		
 		SKU = "";
 		Name = "";
@@ -31,7 +36,9 @@ public class Inventory {
 		
 	}
 	
-	Inventory(String ID,String N, String Des, Double U, Integer QS, Double InvV, Integer RQ, Integer RT, Integer QR, Boolean D){
+	// constructor 
+	Inventory(String ID,String N, String Des, Double U, Integer QS, Double InvV, Integer RQ, Integer RT, Integer QR, Boolean D)
+	{
 		
 		SKU = ID;
 		Name = N;
@@ -46,89 +53,47 @@ public class Inventory {
 	}
 	
 	//GETTERS
-	public String getSKU() {
-		return SKU;
-	}
+	public String getSKU() { return SKU;}
+		
+	public String getName () { return Name;}
+		
+	public String getDescription() {return Description;}
 	
-	public String getDescription () {
-		return Description;
-	}
+	public Double getUnitPrice() { return UnitPrice;}
+		
+	public int getQuantityInStock() { return QuantityInStock;}
 	
-	public String getBinNUM() {
-		return BinNum;
-	}
-	
-	public String getLocation() {
-		return Location;
-	}
-	
-	public String getUnit() {
-		return Unit;
-	}
-	
-	public int getQuantity() {
-		return Quantity;
-	}
-	public int getReorderQuantity() {
-		return ReorderQuantity;
-	}
-	
-	public double getCost() {
-		return Cost;
-	}
-	
-	public double getInventoryValue() {
-		return InventoryValue;
-	}
-	public boolean getReorder() {
-		return Reorder;
-	}
+	public double getInventoryValue() {return InventoryValue;}
+		
+	public double ReorderQuantity() {return ReorderQuantity;}
+		
+	public int getReorderTime() {return ReorderTime;}
+		
+	public int getQuantityInReorder() { return QuantityInReorder;}
+		
+	public boolean getDiscontinuedStatus() { return Discontinued;}
+		
 	
 	//SETTERS
 	
-	public void setSKU(String sku) {
-		this.SKU = sku;
-	}
+	public void setSKU(String SKU) { this.SKU = SKU; }
 	
-	public void setDescription(String Description) {
-		this.Description = Description;
-	}
+	public void setBinNum(String Name) { this.Name = Name; }
 	
-	public void setBinNum(String BinNum) {
-		this.BinNum = BinNum;
-	}
+	public void setDescription(String Description) { this.Description = Description; }
 	
-	public void setLocation(String Loc) {
-		this.Location = Loc;
-	}
+	public void getUnitPrice(Double PriceUnit) { this.UnitPrice = PriceUnit; }
+		
+	public void setQuantityInStock(int Q) { this.QuantityInStock = Q; }
 	
-	public void setUnit(String unit) {
-		this.Unit = unit;
-	}
+	public void setInventoryValue(double Inv) { this.InventoryValue = Inv; }
 	
-	public void setQuantity(int q) {
-		this.Quantity = q;
-	}
+	public void setReorderQuantity(int Re) { this.ReorderQuantity = Re; }
 	
-	public void setReorderQuantity(int ReorderQ) {
-		this.ReorderQuantity = ReorderQ;
-	}
+	public void setReorderTime(int Reorder) { this.ReorderTime = Reorder; }
+		
+	public void setQuantityInReorder(int Quant) {this.QuantityInReorder = Quant;}
 	
-	public void setCost(double cost) {this.Cost = cost;}
-	public void setInvVal(double IV) {this.InventoryValue = IV;}
-	public void setReorder(boolean R) {this.Reorder = R;}
+	public void setDiscontinuedStatus(boolean disc) {this.Discontinued = disc;}
 	
-	public void PrintRecord() {
-		System.out.println("The inventory Record is: \n " 
-							+ "SKU = " + this.SKU + "\n"  
-							+ " Description = " + this.Description + "\n" 
-							+ " BinNum = " + this.BinNum + "\n" 
-							+ " Location = " + this.Location + "\n" 
-							+  " Unit = " + this.Location + "\n" 
-							+ " Quantity = " + this.Quantity + "\n" 
-							+ " Reorder Quantity = " + this.ReorderQuantity + "\n" 
-							+ " Cost = " + this.Cost + "\n" 
-							+ " Inventory Value = " + this.InventoryValue + "\n" 
-							+" Reorder = " + this.Reorder);
-	}
 }
