@@ -205,9 +205,7 @@ public class Warehouse_DB_Linked_List
 				
 				System.out.println("Results: ");
 				// Verifying the total number and value of the added items in the database 
-				System.out.println(warehouseDb.TotalInventoryQuantity());
-				warehouseDb.TotalInventoryValue();
-				System.out.println("-------------------------------------------------------------------------- ");
+				System.out.println(warehouseDb.TotalInventoryQuantity());      
 				
 				
 				System.out.println(Arrays.toString(warehouseDb.CreateIndex("Quantity")));
