@@ -329,9 +329,9 @@ public class Warehouse_DB_Linked_List
 	    
 	}
 	
-	public int[] CreateIndex(String Attribute) {
+	public Inventory[] CreateIndex(String Attribute) {
 		
-		int[] Temp = new int[this.TotalInventoryQuantity()]; 
+		Inventory[] Temp = new int[this.TotalInventoryQuantity()]; 
 		String [] AttributeCopy = new String[this.TotalInventoryQuantity()];
 		String [] AttributeCopyUnsorted = new String[this.TotalInventoryQuantity()];
 		for(int i=0; i<= this.warehouse.size()-1; i++)
