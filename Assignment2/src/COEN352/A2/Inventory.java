@@ -6,43 +6,43 @@ package COEN352.A2;
 public class Inventory {
 
 	private String SKU;
+	private String Name;
 	private String Description;
-	private String BinNum;
-	private String Location;
-	private String Unit;
-	private int Quantity;
-	private int ReorderQuantity;
-	private double Cost;
-	private double InventoryValue; 
-	private boolean Reorder; 
+	private Double UnitPrice;
+	private Integer QuantityInStock;
+	private Double InventoryValue; 
+	private Integer ReorderQuantity;
+	private Integer ReorderTime;
+	private Integer QuantityInReorder;
+	private Boolean Discontinued; 
 	
 	Inventory(){
 		
 		SKU = "";
+		Name = "";
 		Description ="";
-		BinNum = "";
-		Location = "";
-		Unit = "";
-		Quantity = 0;
+		UnitPrice = 0.0;
+		QuantityInStock = 0;
+		InventoryValue = 0.0; 
 		ReorderQuantity = 0;
-		Cost = 0.0;
-		InventoryValue = 0.0;
-		Reorder = false; 
+		ReorderTime= 0;
+		QuantityInReorder= 0;
+		Discontinued = false; 
 		
 	}
 	
-	Inventory(String ID, String D, String BN, String Loc, String unit, int q, int RQ, double cost, double IV, boolean R){
+	Inventory(String ID,String N, String Des, Double U, Integer QS, Double InvV, Integer RQ, Integer RT, Integer QR, Boolean D){
 		
 		SKU = ID;
-		Description = D;
-		BinNum = BN;
-		Location = Loc;
-		Unit = unit;
-		Quantity = q;
+		Name = N;
+		Description = Des;
+		UnitPrice = U;
+		QuantityInStock = QS;
+		InventoryValue = InvV; 
 		ReorderQuantity = RQ;
-		Cost = cost;
-		InventoryValue = IV;
-		Reorder = R; 
+		ReorderTime= RT;
+		QuantityInReorder= QR;
+		Discontinued = D; 
 	}
 	
 	//GETTERS
