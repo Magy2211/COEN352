@@ -5,9 +5,9 @@
 
 package COEN352.A2;
 
-
-public class Inventory {
-
+public class Inventory 
+{
+	// data members 
 	private String SKU;
 	private String Name;
 	private String Description;
@@ -18,6 +18,8 @@ public class Inventory {
 	private Integer ReorderTime;
 	private Integer QuantityInReorder;
 	private Boolean Discontinued; 
+	
+	// Member functions
 	
 	// default constructor
 	Inventory()
@@ -78,11 +80,11 @@ public class Inventory {
 	
 	public void setSKU(String SKU) { this.SKU = SKU; }
 	
-	public void setBinNum(String Name) { this.Name = Name; }
+	public void setName(String Name) { this.Name = Name; }
 	
 	public void setDescription(String Description) { this.Description = Description; }
 	
-	public void getUnitPrice(Double PriceUnit) { this.UnitPrice = PriceUnit; }
+	public void setUnitPrice(Double PriceUnit) { this.UnitPrice = PriceUnit; }
 		
 	public void setQuantityInStock(int Q) { this.QuantityInStock = Q; }
 	
@@ -95,5 +97,25 @@ public class Inventory {
 	public void setQuantityInReorder(int Quant) {this.QuantityInReorder = Quant;}
 	
 	public void setDiscontinuedStatus(boolean disc) {this.Discontinued = disc;}
+
+	// printing the entries of the inventory
 	
+	public void PrintRecord() 
+	{
+				System.out.println(" \n" 
+									+ " SKU = " + this.SKU + "\n"  
+									+ " Name = " + this.Name+ "\n" 
+									+ " Description = " + this.Description + "\n" 
+									+ " Unit Price ($) = " + this.UnitPrice + "\n" 
+									+ " Quantity in stock = " + this.QuantityInStock + "\n" 
+									+ " Item inventory value ($) = " + this.InventoryValue + "\n" 
+									+ " Reorder Quantity = " + this.ReorderQuantity + "\n" 
+									+ " Reorder Time (days) = " + this.ReorderTime + "\n" 
+									+ " Quantiry in reorder = " + this.QuantityInReorder + "\n"
+				                    + " Is the product discontinued ? = " + this.Discontinued); 						
+	}
 }
+
+
+
+
