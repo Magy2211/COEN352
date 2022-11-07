@@ -351,22 +351,14 @@ public class Warehouse_DB_Linked_List
 	    }
 	    else System.out.println(" The record was not found in the inventory."); 
 	}
-<<<<<<< HEAD
 	
 	// sorting the array of an attribute and outputting the sorted array
-	public Inventory[] CreateIndex(String Attribute) 
+	public Inventory[] CreateIndex(String Attribute)
 	{
-		// Creating a temporary array of type inventory to store the sorted array 
-		Inventory[] Temp = new Inventory[this.TotalInventoryQuantity()]; 
-=======
-
-	/*
-	public Inventory[] CreateIndex(String Attribute) {
-		
-		Inventory[] Temp = new int[this.TotalInventoryQuantity()]; 
->>>>>>> branch 'master' of https://github.com/Magy2211/COEN352.git
+		Inventory[] Temp = new Inventory[this.TotalInventoryQuantity()];
 		String [] AttributeCopy = new String[this.TotalInventoryQuantity()];
 		String [] AttributeCopyUnsorted = new String[this.TotalInventoryQuantity()];
+		
 		for(int i=0; i<= this.warehouse.size()-1; i++)
 		{
 			switch(Attribute)
@@ -384,22 +376,21 @@ public class Warehouse_DB_Linked_List
 					AttributeCopy[i] = (this.warehouse.getV_list())[i].getDescription();
 					AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getDescription();
 					break;
-<<<<<<< HEAD
+
 				case "Unit Price":
 					AttributeCopy[i] = Double.toString((this.warehouse.getV_list())[i].getUnitPrice());
 					AttributeCopyUnsorted[i] = Double.toString ((this.warehouse.getV_list())[i].getUnitPrice());
-=======
+
 					
 				case "Name":
 					AttributeCopy[i] = (this.warehouse.getV_list())[i].getBinNUM();
 					AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getBinNUM();
->>>>>>> branch 'master' of https://github.com/Magy2211/COEN352.git
 					break;
-<<<<<<< HEAD
+
 				case "Quantity in Stock": 
 					AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantityInStock());
 					AttributeCopyUnsorted[i] = Integer.toString ((this.warehouse.getV_list())[i].getQuantityInStock());
-=======
+
 				case "UnitPrice":
 					AttributeCopy[i] = (this.warehouse.getV_list())[i].getLocation();
 					AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getLocation();
@@ -407,13 +398,10 @@ public class Warehouse_DB_Linked_List
 				case "QuantityInStock": 
 					AttributeCopy[i] = (this.warehouse.getV_list())[i].getUnit();
 					AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getUnit();
->>>>>>> branch 'master' of https://github.com/Magy2211/COEN352.git
-					break;
-				
-<<<<<<< HEAD
+					
 				case "Inventory Value":
-=======
-				case "InventoryValue:
+
+				case "InventoryValue":
 					AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantity());
 					AttributeCopyUnsorted[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantity());
 					break;
@@ -429,12 +417,11 @@ public class Warehouse_DB_Linked_List
 					break;
 					
 				case "QuantityInReorder":
->>>>>>> branch 'master' of https://github.com/Magy2211/COEN352.git
+
 					AttributeCopy[i] = Double.toString((this.warehouse.getV_list())[i].getInventoryValue());
 					AttributeCopyUnsorted[i] = Double.toString((this.warehouse.getV_list())[i].getInventoryValue());
 					break;
-					
-<<<<<<< HEAD
+				
 				case "Reorder Quantity":
 					AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantityInReorder());
 					AttributeCopyUnsorted[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantityInReorder());
@@ -450,21 +437,18 @@ public class Warehouse_DB_Linked_List
 					AttributeCopyUnsorted[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantityInReorder());
 					break;
 					
-					/*
-				case "Discontinued Status":
-=======
 				case "Discontinued":
->>>>>>> branch 'master' of https://github.com/Magy2211/COEN352.git
 					AttributeCopy[i] = Boolean.toString((this.warehouse.getV_list())[i].getReorder());
 					AttributeCopyUnsorted[i] = Boolean.toString((this.warehouse.getV_list())[i].getReorder());
 					break;
-					*/
+					
 				default:
 					System.out.println("Invalid attribute!");
 					
 			}
 		}
 			
+		
 			QuickSort.qsort(AttributeCopy, 0, this.TotalInventoryQuantity()); 
 			int count = 0; 
 			for(int j=0; j<=this.TotalInventoryQuantity(); j++) 
