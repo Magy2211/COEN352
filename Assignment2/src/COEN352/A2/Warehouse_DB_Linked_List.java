@@ -323,6 +323,18 @@ public class Warehouse_DB_Linked_List
 	    inventoryTotalValue = 0;
 	}
 	
+	public Inventory[] CopyList() {
+		
+		Inventory[] copy = new Inventory[warehouse.size()];
+		Integer Count = 0;
+		
+		for(warehouse.getV_list().moveToStart(); warehouse.getV_list().currPos() < warehouse.size();warehouse.getV_list().moveToPos(Count++)) {
+			
+			copy[Count] = (warehouse.getV_list()).getValue();
+		}
+		return copy;
+		
+	}
 	// returning the total number of inventories 
 	public int TotalInventoryQuantity() {return inventory_number_of_entries;}
 
@@ -339,12 +351,20 @@ public class Warehouse_DB_Linked_List
 	    }
 	    else System.out.println(" The record was not found in the inventory."); 
 	}
+<<<<<<< HEAD
 	
 	// sorting the array of an attribute and outputting the sorted array
 	public Inventory[] CreateIndex(String Attribute) 
 	{
 		// Creating a temporary array of type inventory to store the sorted array 
 		Inventory[] Temp = new Inventory[this.TotalInventoryQuantity()]; 
+=======
+
+	/*
+	public Inventory[] CreateIndex(String Attribute) {
+		
+		Inventory[] Temp = new int[this.TotalInventoryQuantity()]; 
+>>>>>>> branch 'master' of https://github.com/Magy2211/COEN352.git
 		String [] AttributeCopy = new String[this.TotalInventoryQuantity()];
 		String [] AttributeCopyUnsorted = new String[this.TotalInventoryQuantity()];
 		for(int i=0; i<= this.warehouse.size()-1; i++)
@@ -364,20 +384,57 @@ public class Warehouse_DB_Linked_List
 					AttributeCopy[i] = (this.warehouse.getV_list())[i].getDescription();
 					AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getDescription();
 					break;
+<<<<<<< HEAD
 				case "Unit Price":
 					AttributeCopy[i] = Double.toString((this.warehouse.getV_list())[i].getUnitPrice());
 					AttributeCopyUnsorted[i] = Double.toString ((this.warehouse.getV_list())[i].getUnitPrice());
+=======
+					
+				case "Name":
+					AttributeCopy[i] = (this.warehouse.getV_list())[i].getBinNUM();
+					AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getBinNUM();
+>>>>>>> branch 'master' of https://github.com/Magy2211/COEN352.git
 					break;
+<<<<<<< HEAD
 				case "Quantity in Stock": 
 					AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantityInStock());
 					AttributeCopyUnsorted[i] = Integer.toString ((this.warehouse.getV_list())[i].getQuantityInStock());
+=======
+				case "UnitPrice":
+					AttributeCopy[i] = (this.warehouse.getV_list())[i].getLocation();
+					AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getLocation();
+					break;
+				case "QuantityInStock": 
+					AttributeCopy[i] = (this.warehouse.getV_list())[i].getUnit();
+					AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getUnit();
+>>>>>>> branch 'master' of https://github.com/Magy2211/COEN352.git
 					break;
 				
+<<<<<<< HEAD
 				case "Inventory Value":
+=======
+				case "InventoryValue:
+					AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantity());
+					AttributeCopyUnsorted[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantity());
+					break;
+					
+				case "ReorderQuantity":
+					AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getReorderQuantity());
+					AttributeCopyUnsorted[i] = Integer.toString((this.warehouse.getV_list())[i].getReorderQuantity());
+					break;
+				
+				case "ReorderTime": 
+					AttributeCopy[i] = Double.toString((this.warehouse.getV_list())[i].getCost());
+					AttributeCopyUnsorted[i] = Double.toString((this.warehouse.getV_list())[i].getCost());
+					break;
+					
+				case "QuantityInReorder":
+>>>>>>> branch 'master' of https://github.com/Magy2211/COEN352.git
 					AttributeCopy[i] = Double.toString((this.warehouse.getV_list())[i].getInventoryValue());
 					AttributeCopyUnsorted[i] = Double.toString((this.warehouse.getV_list())[i].getInventoryValue());
 					break;
 					
+<<<<<<< HEAD
 				case "Reorder Quantity":
 					AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantityInReorder());
 					AttributeCopyUnsorted[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantityInReorder());
@@ -395,6 +452,9 @@ public class Warehouse_DB_Linked_List
 					
 					/*
 				case "Discontinued Status":
+=======
+				case "Discontinued":
+>>>>>>> branch 'master' of https://github.com/Magy2211/COEN352.git
 					AttributeCopy[i] = Boolean.toString((this.warehouse.getV_list())[i].getReorder());
 					AttributeCopyUnsorted[i] = Boolean.toString((this.warehouse.getV_list())[i].getReorder());
 					break;
