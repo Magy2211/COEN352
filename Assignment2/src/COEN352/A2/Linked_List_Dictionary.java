@@ -30,9 +30,9 @@ public class Linked_List_Dictionary<Key,E> implements ADTDictionary<Key,E>
 		V_list.clear();
 		
 	}
-	public E[] getV_list() {
+	public LList<E> getV_list() {
 		
-		E [] Temp = new E[];
+		/*E [] Temp = new E[];
 		V_list.moveToStart();
 		
 		for(int i=0; i<=V_list.length()-1;i++) {
@@ -41,7 +41,9 @@ public class Linked_List_Dictionary<Key,E> implements ADTDictionary<Key,E>
 			V_list.moveToPos(i++);
 		}
 		
-		return Temp; 
+		return Temp;*/
+		
+		return V_list;
 	}
 
 	/** Insert a record
@@ -135,5 +137,8 @@ public class Linked_List_Dictionary<Key,E> implements ADTDictionary<Key,E>
 	{
 		return K_list.length();
 	}
+	
+	
+	
 	
 };
