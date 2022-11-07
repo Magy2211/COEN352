@@ -352,19 +352,19 @@ public class Warehouse_DB_Linked_List
 	    else System.out.println(" The record was not found in the inventory."); 
 	}
 
-	/*
+
 	public Inventory[] CreateIndex(String Attribute) {
 		
-		Inventory[] Temp = new int[this.TotalInventoryQuantity()]; 
+		Inventory[] Temp = this.CopyList(); 
 		String [] AttributeCopy = new String[this.TotalInventoryQuantity()];
-		String [] AttributeCopyUnsorted = new String[this.TotalInventoryQuantity()];
-		for(int i=0; i<= this.warehouse.size()-1; i++)
-		{
+		//String [] AttributeCopyUnsorted = new String[this.TotalInventoryQuantity()];
+		//for(int i=0; i<= this.warehouse.size()-1; i++)
+		
 			switch(Attribute)
 			{
 				case "SKU":
-					AttributeCopy[i] = (this.warehouse.getV_list())[i].getSKU();
-					AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getSKU();
+					
+					QuickSort.qsort(Temp,0,warehouse.size()-1);
 					break;
 				case "Description":
 					AttributeCopy[i] = (this.warehouse.getV_list())[i].getDescription();
@@ -384,7 +384,7 @@ public class Warehouse_DB_Linked_List
 					AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getUnit();
 					break;
 				
-				case "InventoryValue:
+				case "InventoryValue":
 					AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantity());
 					AttributeCopyUnsorted[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantity());
 					break;
@@ -413,9 +413,8 @@ public class Warehouse_DB_Linked_List
 					System.out.println("Invalid attribute!");
 					
 			}
-		}
 			
-			QuickSort.qsort(AttributeCopy, 0, this.TotalInventoryQuantity()); 
+			/*QuickSort.qsort(AttributeCopy, 0, this.TotalInventoryQuantity()); 
 			int count = 0; 
 			for(int j=0; j<=this.TotalInventoryQuantity(); j++) {
 				
@@ -425,11 +424,9 @@ public class Warehouse_DB_Linked_List
 						count++;
 					}
 				}
-			}
+			}*/
 		
 		return Temp; 
 	}
-	
-	*/
 	
 }
