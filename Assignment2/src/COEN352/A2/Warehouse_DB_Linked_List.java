@@ -420,80 +420,62 @@ public class Warehouse_DB_Linked_List
 				
 				/* 
 			case "Name":
-				AttributeCopy[i] = (this.warehouse.getV_list())[i].getName();
-				AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getDescription();
+				
 				break;
 				
 			case "Description":
-				AttributeCopy[i] = (this.warehouse.getV_list())[i].getDescription();
-				AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getDescription();
+				
 				break;
 
 			case "Unit Price":
-				AttributeCopy[i] = Double.toString((this.warehouse.getV_list())[i].getUnitPrice());
-				AttributeCopyUnsorted[i] = Double.toString ((this.warehouse.getV_list())[i].getUnitPrice());
+				
 
 				
 			case "Name":
-				AttributeCopy[i] = (this.warehouse.getV_list())[i].getBinNUM();
-				AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getBinNUM();
+				
 				break;
 
 			case "Quantity in Stock": 
-				AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantityInStock());
-				AttributeCopyUnsorted[i] = Integer.toString ((this.warehouse.getV_list())[i].getQuantityInStock());
+				
 
 			case "UnitPrice":
-				AttributeCopy[i] = (this.warehouse.getV_list())[i].getLocation();
-				AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getLocation();
+				
 				break;
 			case "QuantityInStock": 
-				AttributeCopy[i] = (this.warehouse.getV_list())[i].getUnit();
-				AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getUnit();
+				
 
 				break;
 
 
 			case "InventoryValue":
-				AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantity());
-				AttributeCopyUnsorted[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantity());
+				
 				break;
 				
 			case "ReorderQuantity":
-				AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getReorderQuantity());
-				AttributeCopyUnsorted[i] = Integer.toString((this.warehouse.getV_list())[i].getReorderQuantity());
+				
 				break;
 			
 			case "ReorderTime": 
-				AttributeCopy[i] = Double.toString((this.warehouse.getV_list())[i].getCost());
-				AttributeCopyUnsorted[i] = Double.toString((this.warehouse.getV_list())[i].getCost());
+				
 				break;
 				
 			case "QuantityInReorder":
 
-				AttributeCopy[i] = Double.toString((this.warehouse.getV_list())[i].getInventoryValue());
-				AttributeCopyUnsorted[i] = Double.toString((this.warehouse.getV_list())[i].getInventoryValue());
+				
 				break;
 			
 			case "Reorder Quantity":
-				AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantityInReorder());
-				AttributeCopyUnsorted[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantityInReorder());
+				
 				break;
 			
 			case "Reorder Time": 
-				AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getReorderTime());
-				AttributeCopyUnsorted[i] = Integer.toString((this.warehouse.getV_list())[i].getReorderTime());
+				
 				break;
 				
 			case "Quantity in Reorder":
-				AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantityInReorder());
-				AttributeCopyUnsorted[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantityInReorder());
+				
 				break;
 				
-			case "Discontinued":
-				AttributeCopy[i] = Boolean.toString((this.warehouse.getV_list())[i].getReorder());
-				AttributeCopyUnsorted[i] = Boolean.toString((this.warehouse.getV_list())[i].getReorder());
-				break;
 				
 			default:
 				System.out.println("Invalid attribute!");
