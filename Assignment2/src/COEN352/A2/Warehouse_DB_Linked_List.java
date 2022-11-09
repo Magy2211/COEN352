@@ -6,7 +6,6 @@
 package COEN352.A2;
 import java.util.Arrays;
 
-import COEN352.A2.QuickSort;
 
 
 public class Warehouse_DB_Linked_List 
@@ -272,6 +271,10 @@ public class Warehouse_DB_Linked_List
 				System.out.println(" There are " + warehouseDb.TotalInventoryQuantity() + " inventories in this database.");
 				System.out.println(" The total value of the inventories is: " + warehouseDb.TotalInventoryValue());
 				
+				System.out.println("-------------------------------------------------------------------------- ");
+				System.out.println("Testing the CreateIndex function....");
+				
+				warehouseDb.CreateIndex(inventory_1.getSKU()); 
 				
 				
 				
@@ -282,8 +285,7 @@ public class Warehouse_DB_Linked_List
 	private double inventoryTotalValue; // will help in calculating total cost of the inventory
 	private int inventory_number_of_entries; // will help in calculating total value of the inventory
 	private Linked_List_Dictionary<String,Inventory> warehouse;  // warehouse object to store all inventory items
-	
-	
+
 	// Database member function 
 	
 	// constructor 
@@ -352,17 +354,68 @@ public class Warehouse_DB_Linked_List
 	    else System.out.println(" The record was not found in the inventory."); 
 
 	}
-
-
-	public Inventory[] CreateIndex(String Attribute) {
+	
+	// Method for finding the pivot 
+	
+		int findpivot(Inventory[] A, int i, int j){ return (i+j)/2; }
 		
+		// Partition method to be used inside quicksort
+		
+		int partition(Inventory[] A, int l, int r, Inventory pivot) {
+			  
+			  do {// Move bounds inward until they meet
+			    
+				while (A[++l].compareTo(pivot)<0);
+			    
+				while ((r!=0) && (A[--r].compareTo(pivot)>0));
+			    
+				DSutil.swap(A, l, r);       // Swap out-of-place values
+			  } while (l < r);              // Stop when they cross
+			  DSutil.swap(A, l, r);         // Reverse last, wasted swap
+			  return l;      // Return first position in right partition
+			}
+
+		
+		// implementing the quicksort algorithm from the source code
+		
+		void qsort(Inventory[] A, int i, int j) 
+		{      
+			  
+			  int pivotindex = findpivot(A, i, j); // Pick a pivot
+			  
+			  DSutil.swap(A, pivotindex, j);       // Stick pivot at end
+			  
+			  // k will be the first position in the right subarray
+			  
+			  int k = partition(A, i-1, j, A[j]);
+			  
+			  DSutil.swap(A, k, j);  // Put pivot in place
+			  
+			  if ((k-i) > 1) qsort(A, i, k-1);   // Sort left partition
+			  if ((j-k) > 1) qsort(A, k+1, j);   // Sort right partition
+			}
+
+
+	public Inventory[] CreateIndex(String Attribute) 
+	{
+		/* Algorithm: 
+		 * 1. Create a temporary value to store a copy of the inventory database 
+		 * 2. Case statement to determine which attribute will be selected for sorting 
+		 * 3. Sort the attribute inside of the switch statement 
+		 * 4. return the sorted temporary array 
+		 */
 		Inventory[] Temp = this.CopyList(); 
 		
 		switch(Attribute)
 		{
 			case "SKU":
 				
-				QuickSort.qsort(Temp,0,warehouse.size()-1);
+				//fetch the SKU variables from the inventory database 
+				
+				
+				
+				// quick sorting the values of SKU in the Temp object 
+				qsort(Temp,0,warehouse.size()-1); 
 				break;
 				
 				/* 
@@ -446,50 +499,7 @@ public class Warehouse_DB_Linked_List
 				System.out.println("Invalid attribute!");
 				
 				*/
-				
 		}
 		return Temp; 
 	}
-	
-	
-	// Method for finding the pivot 
-	
-	int findpivot(Inventory[] A, int i, int j){ return (i+j)/2; }
-	
-	// Partition method to be used inside quicksort
-	
-	int partition(Inventory[] A, int l, int r, Inventory pivot) {
-		  
-		  do {// Move bounds inward until they meet
-		    
-			while (A[++l].compareTo(pivot)<0);
-		    
-			while ((r!=0) && (A[--r].compareTo(pivot)>0));
-		    
-			DSutil.swap(A, l, r);       // Swap out-of-place values
-		  } while (l < r);              // Stop when they cross
-		  DSutil.swap(A, l, r);         // Reverse last, wasted swap
-		  return l;      // Return first position in right partition
-		}
-
-	
-	// implementing the quicksort algorithm from the source code
-	
-	void qsort(Inventory[] A, int i, int j) {      
-		  
-		  int pivotindex = findpivot(A, i, j); // Pick a pivot
-		  
-		  DSutil.swap(A, pivotindex, j);       // Stick pivot at end
-		  
-		  // k will be the first position in the right subarray
-		  
-		  int k = partition(A, i-1, j, A[j]);
-		  
-		  DSutil.swap(A, k, j);  // Put pivot in place
-		  
-		  if ((k-i) > 1) qsort(A, i, k-1);   // Sort left partition
-		  if ((j-k) > 1) qsort(A, k+1, j);   // Sort right partition
-		}
-	
-	
 }
