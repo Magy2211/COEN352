@@ -114,6 +114,11 @@ public class Inventory
 									+ " Quantiry in reorder = " + this.QuantityInReorder + "\n"
 				                    + " Is the product discontinued ? = " + this.Discontinued); 						
 	}
+
+	public int compareTo(Inventory pivot) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
 
 
