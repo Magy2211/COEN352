@@ -273,8 +273,17 @@ public class Warehouse_DB_Linked_List
 				
 				System.out.println("-------------------------------------------------------------------------- ");
 				System.out.println("Testing the CreateIndex function....");
+				warehouseDb.InsertRecord(inventory_1);
+				warehouseDb.InsertRecord(inventory_2);
+				warehouseDb.InsertRecord(inventory_3);
+				warehouseDb.InsertRecord(inventory_4);
+				warehouseDb.InsertRecord(inventory_5);
+				warehouseDb.InsertRecord(inventory_6);
+				warehouseDb.InsertRecord(inventory_7);
+				warehouseDb.InsertRecord(inventory_8);
+				warehouseDb.InsertRecord(inventory_9);
 				
-				warehouseDb.CreateIndex(inventory_1.getSKU()); 
+				warehouseDb.CreateIndex("SKU"); 
 				
 				
 				
@@ -330,8 +339,8 @@ public class Warehouse_DB_Linked_List
 		Inventory[] copy = new Inventory[warehouse.size()];
 		Integer Count = 0;
 		
-		for(warehouse.getV_list().moveToStart(); warehouse.getV_list().currPos() < warehouse.size();warehouse.getV_list().moveToPos(Count++)) {
-			
+		for(warehouse.getV_list().moveToStart(); warehouse.getV_list().currPos() < warehouse.size();warehouse.getV_list().moveToPos(Count++)) 
+		{
 			copy[Count] = (warehouse.getV_list()).getValue();
 		}
 		return copy;
@@ -361,14 +370,17 @@ public class Warehouse_DB_Linked_List
 		
 		// Partition method to be used inside quicksort
 		
-		int partition(Inventory[] A, int l, int r, Inventory pivot) {
+		int partition(String Att, Inventory[] A, int l, int r, Inventory pivot) {
 			  
 			  do {// Move bounds inward until they meet
-			    
-				while (A[++l].compareTo(pivot)<0);
-			    
+			  
+				  
+				  if (Att == "SKU") //fetch the SKU variables from the inventory database
+				  {
+				     while (A[++l].getSKU().compareTo(pivot.getSKU())<0);
+			   
 				while ((r!=0) && (A[--r].compareTo(pivot)>0));
-			    
+				  }
 				DSutil.swap(A, l, r);       // Swap out-of-place values
 			  } while (l < r);              // Stop when they cross
 			  DSutil.swap(A, l, r);         // Reverse last, wasted swap
@@ -378,8 +390,9 @@ public class Warehouse_DB_Linked_List
 		
 		// implementing the quicksort algorithm from the source code
 		
-		void qsort(Inventory[] A, int i, int j) 
+		void qsort(String att, Inventory[] A, int i, int j) 
 		{      
+			
 			  
 			  int pivotindex = findpivot(A, i, j); // Pick a pivot
 			  
@@ -387,12 +400,12 @@ public class Warehouse_DB_Linked_List
 			  
 			  // k will be the first position in the right subarray
 			  
-			  int k = partition(A, i-1, j, A[j]);
+			  int k = partition(att,A, i-1, j, A[j]);
 			  
 			  DSutil.swap(A, k, j);  // Put pivot in place
 			  
-			  if ((k-i) > 1) qsort(A, i, k-1);   // Sort left partition
-			  if ((j-k) > 1) qsort(A, k+1, j);   // Sort right partition
+			  if ((k-i) > 1) qsort(att, A, i, k-1);   // Sort left partition
+			  if ((j-k) > 1) qsort(att, A, k+1, j);   // Sort right partition
 			}
 
 
@@ -400,7 +413,7 @@ public class Warehouse_DB_Linked_List
 	{
 		/* Algorithm: 
 		 * 1. Create a temporary value to store a copy of the inventory database 
-		 * 2. Case statement to determine which attribute will be selected for sorting 
+		 * 2. switch statement to determine which attribute will be selected for sorting 
 		 * 3. Sort the attribute inside of the switch statement 
 		 * 4. return the sorted temporary array 
 		 */
@@ -409,13 +422,8 @@ public class Warehouse_DB_Linked_List
 		switch(Attribute)
 		{
 			case "SKU":
-				
-				//fetch the SKU variables from the inventory database 
-				
-				
-				
 				// quick sorting the values of SKU in the Temp object 
-				qsort(Temp,0,warehouse.size()-1); 
+				qsort(Attribute,Temp,0,warehouse.size()-1); 
 				break;
 				
 				/* 
