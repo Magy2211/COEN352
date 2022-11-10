@@ -283,7 +283,14 @@ public class Warehouse_DB_Linked_List
 				warehouseDb.InsertRecord(inventory_8);
 				warehouseDb.InsertRecord(inventory_9);
 				
-				warehouseDb.CreateIndex("SKU"); 
+				Inventory [] sortedInventory = new Inventory[8];
+				sortedInventory = warehouseDb.CreateIndex("SKU"); 
+				
+				int i;
+				for(i=0; i < sortedInventory.length ; i++) 
+				{
+					sortedInventory[i].PrintRecord();
+				}
 				
 				
 				
@@ -339,9 +346,9 @@ public class Warehouse_DB_Linked_List
 		Inventory[] copy = new Inventory[warehouse.size()];
 		Integer Count = 0;
 		
-		for(warehouse.getV_list().moveToStart(); warehouse.getV_list().currPos() < warehouse.size();warehouse.getV_list().moveToPos(Count++)) 
+		for(warehouse.getV_list().moveToStart(); warehouse.getV_list().currPos() < warehouse.size();warehouse.getV_list().moveToPos(Count)) 
 		{
-			copy[Count] = (warehouse.getV_list()).getValue();
+			copy[Count++] = (warehouse.getV_list()).getValue();
 		}
 		return copy;
 		
@@ -387,7 +394,6 @@ public class Warehouse_DB_Linked_List
 			  DSutil.swap(A, l, r);         // Reverse last, wasted swap
 			  return l;      // Return first position in right partition
 			}
-
 		
 		// implementing the quicksort algorithm from the source code
 		
