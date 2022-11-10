@@ -372,17 +372,18 @@ public class Warehouse_DB_Linked_List
 		
 		int partition(String Att, Inventory[] A, int l, int r, Inventory pivot) {
 			  
-			  do {// Move bounds inward until they meet
-			  
-				  
+			do {// Move bounds inward until they meet
+
 				  if (Att == "SKU") //fetch the SKU variables from the inventory database
 				  {
 				     while (A[++l].getSKU().compareTo(pivot.getSKU())<0);
-			   
-				while ((r!=0) && (A[--r].compareTo(pivot)>0));
+				     while ((r!=0) && (A[--r].getSKU().compareTo(pivot.getSKU())>0));
 				  }
-				DSutil.swap(A, l, r);       // Swap out-of-place values
-			  } while (l < r);              // Stop when they cross
+				  
+			DSutil.swap(A, l, r);       // Swap out-of-place values
+			  }
+			
+			while (l < r);              // Stop when they cross
 			  DSutil.swap(A, l, r);         // Reverse last, wasted swap
 			  return l;      // Return first position in right partition
 			}
@@ -393,7 +394,6 @@ public class Warehouse_DB_Linked_List
 		void qsort(String att, Inventory[] A, int i, int j) 
 		{      
 			
-			  
 			  int pivotindex = findpivot(A, i, j); // Pick a pivot
 			  
 			  DSutil.swap(A, pivotindex, j);       // Stick pivot at end
