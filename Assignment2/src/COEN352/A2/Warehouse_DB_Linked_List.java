@@ -6,8 +6,6 @@
 package COEN352.A2;
 import java.util.Arrays;
 
-import COEN352.A2.QuickSort;
-
 
 public class Warehouse_DB_Linked_List 
 
@@ -361,8 +359,10 @@ public class Warehouse_DB_Linked_List
 		switch(Attribute)
 		{
 			case "SKU":
+				QuickSort InventorySort = new QuickSort();
+				InventorySort.sort(Temp);
 				
-				QuickSort.qsort(Temp,0,warehouse.size()-1);
+				
 				break;
 			case "Name":
 				AttributeCopy[i] = (this.warehouse.getV_list())[i].getName();
