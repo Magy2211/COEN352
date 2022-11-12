@@ -6,6 +6,10 @@
 package COEN352.A2;
 import java.util.Arrays;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/Magy2211/COEN352.git
 
 public class Warehouse_DB_Linked_List 
 
@@ -270,6 +274,26 @@ public class Warehouse_DB_Linked_List
 				System.out.println(" There are " + warehouseDb.TotalInventoryQuantity() + " inventories in this database.");
 				System.out.println(" The total value of the inventories is: " + warehouseDb.TotalInventoryValue());
 				
+				System.out.println("-------------------------------------------------------------------------- ");
+				System.out.println("Testing the CreateIndex function....");
+				warehouseDb.InsertRecord(inventory_1);
+				warehouseDb.InsertRecord(inventory_2);
+				warehouseDb.InsertRecord(inventory_3);
+				warehouseDb.InsertRecord(inventory_4);
+				warehouseDb.InsertRecord(inventory_5);
+				warehouseDb.InsertRecord(inventory_6);
+				warehouseDb.InsertRecord(inventory_7);
+				warehouseDb.InsertRecord(inventory_8);
+				warehouseDb.InsertRecord(inventory_9);
+				
+				Inventory [] sortedInventory = new Inventory[8];
+				sortedInventory = warehouseDb.CreateIndex("SKU"); 
+				
+				int i;
+				for(i=0; i < sortedInventory.length ; i++) 
+				{
+					sortedInventory[i].PrintRecord();
+				}
 				
 				
 				
@@ -280,8 +304,7 @@ public class Warehouse_DB_Linked_List
 	private double inventoryTotalValue; // will help in calculating total cost of the inventory
 	private int inventory_number_of_entries; // will help in calculating total value of the inventory
 	private Linked_List_Dictionary<String,Inventory> warehouse;  // warehouse object to store all inventory items
-	
-	
+
 	// Database member function 
 	
 	// constructor 
@@ -326,9 +349,9 @@ public class Warehouse_DB_Linked_List
 		Inventory[] copy = new Inventory[warehouse.size()];
 		Integer Count = 0;
 		
-		for(warehouse.getV_list().moveToStart(); warehouse.getV_list().currPos() < warehouse.size();warehouse.getV_list().moveToPos(Count++)) {
-			
-			copy[Count] = (warehouse.getV_list()).getValue();
+		for(warehouse.getV_list().moveToStart(); warehouse.getV_list().currPos() < warehouse.size();warehouse.getV_list().moveToPos(Count)) 
+		{
+			copy[Count++] = (warehouse.getV_list()).getValue();
 		}
 		return copy;
 		
@@ -350,102 +373,139 @@ public class Warehouse_DB_Linked_List
 	    else System.out.println(" The record was not found in the inventory."); 
 
 	}
-
-
-	public Inventory[] CreateIndex(String Attribute) {
+	
+	// Method for finding the pivot 
+	
+		int findpivot(Inventory[] A, int i, int j){ return (i+j)/2; }
 		
+		// Partition method to be used inside quicksort
+		
+		int partition(String Att, Inventory[] A, int l, int r, Inventory pivot) {
+			  
+			do {// Move bounds inward until they meet
+
+				  if (Att == "SKU") //fetch the SKU variables from the inventory database
+				  {
+				     while (A[++l].getSKU().compareTo(pivot.getSKU())<0);
+				     while ((r!=0) && (A[--r].getSKU().compareTo(pivot.getSKU())>0));
+				  }
+				  
+			DSutil.swap(A, l, r);       // Swap out-of-place values
+			  }
+			
+			while (l < r);              // Stop when they cross
+			  DSutil.swap(A, l, r);         // Reverse last, wasted swap
+			  return l;      // Return first position in right partition
+			}
+		
+		// implementing the quicksort algorithm from the source code
+		
+		void qsort(String att, Inventory[] A, int i, int j) 
+		{      
+			
+			  int pivotindex = findpivot(A, i, j); // Pick a pivot
+			  
+			  DSutil.swap(A, pivotindex, j);       // Stick pivot at end
+			  
+			  // k will be the first position in the right subarray
+			  
+			  int k = partition(att,A, i-1, j, A[j]);
+			  
+			  DSutil.swap(A, k, j);  // Put pivot in place
+			  
+			  if ((k-i) > 1) qsort(att, A, i, k-1);   // Sort left partition
+			  if ((j-k) > 1) qsort(att, A, k+1, j);   // Sort right partition
+			}
+
+
+	public Inventory[] CreateIndex(String Attribute) 
+	{
+		/* Algorithm: 
+		 * 1. Create a temporary value to store a copy of the inventory database 
+		 * 2. switch statement to determine which attribute will be selected for sorting 
+		 * 3. Sort the attribute inside of the switch statement 
+		 * 4. return the sorted temporary array 
+		 */
 		Inventory[] Temp = this.CopyList(); 
 		
 		switch(Attribute)
 		{
 			case "SKU":
+<<<<<<< HEAD
 				QuickSort InventorySort = new QuickSort();
 				InventorySort.sort(Temp);
 				
 				
+=======
+				// quick sorting the values of SKU in the Temp object 
+				qsort(Attribute,Temp,0,warehouse.size()-1); 
+>>>>>>> branch 'master' of https://github.com/Magy2211/COEN352.git
 				break;
+				
+				/* 
 			case "Name":
-				AttributeCopy[i] = (this.warehouse.getV_list())[i].getName();
-				AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getDescription();
+				
 				break;
 				
 			case "Description":
-				AttributeCopy[i] = (this.warehouse.getV_list())[i].getDescription();
-				AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getDescription();
+				
 				break;
 
 			case "Unit Price":
-				AttributeCopy[i] = Double.toString((this.warehouse.getV_list())[i].getUnitPrice());
-				AttributeCopyUnsorted[i] = Double.toString ((this.warehouse.getV_list())[i].getUnitPrice());
+				
 
 				
 			case "Name":
-				AttributeCopy[i] = (this.warehouse.getV_list())[i].getBinNUM();
-				AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getBinNUM();
+				
 				break;
 
 			case "Quantity in Stock": 
-				AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantityInStock());
-				AttributeCopyUnsorted[i] = Integer.toString ((this.warehouse.getV_list())[i].getQuantityInStock());
+				
 
 			case "UnitPrice":
-				AttributeCopy[i] = (this.warehouse.getV_list())[i].getLocation();
-				AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getLocation();
+				
 				break;
 			case "QuantityInStock": 
-				AttributeCopy[i] = (this.warehouse.getV_list())[i].getUnit();
-				AttributeCopyUnsorted[i] = (this.warehouse.getV_list())[i].getUnit();
+				
 
 				break;
 
 
 			case "InventoryValue":
-				AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantity());
-				AttributeCopyUnsorted[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantity());
+				
 				break;
 				
 			case "ReorderQuantity":
-				AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getReorderQuantity());
-				AttributeCopyUnsorted[i] = Integer.toString((this.warehouse.getV_list())[i].getReorderQuantity());
+				
 				break;
 			
 			case "ReorderTime": 
-				AttributeCopy[i] = Double.toString((this.warehouse.getV_list())[i].getCost());
-				AttributeCopyUnsorted[i] = Double.toString((this.warehouse.getV_list())[i].getCost());
+				
 				break;
 				
 			case "QuantityInReorder":
 
-				AttributeCopy[i] = Double.toString((this.warehouse.getV_list())[i].getInventoryValue());
-				AttributeCopyUnsorted[i] = Double.toString((this.warehouse.getV_list())[i].getInventoryValue());
+				
 				break;
 			
 			case "Reorder Quantity":
-				AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantityInReorder());
-				AttributeCopyUnsorted[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantityInReorder());
+				
 				break;
 			
 			case "Reorder Time": 
-				AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getReorderTime());
-				AttributeCopyUnsorted[i] = Integer.toString((this.warehouse.getV_list())[i].getReorderTime());
+				
 				break;
 				
 			case "Quantity in Reorder":
-				AttributeCopy[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantityInReorder());
-				AttributeCopyUnsorted[i] = Integer.toString((this.warehouse.getV_list())[i].getQuantityInReorder());
+				
 				break;
 				
-			case "Discontinued":
-				AttributeCopy[i] = Boolean.toString((this.warehouse.getV_list())[i].getReorder());
-				AttributeCopyUnsorted[i] = Boolean.toString((this.warehouse.getV_list())[i].getReorder());
-				break;
 				
 			default:
 				System.out.println("Invalid attribute!");
 				
+				*/
 		}
-		
 		return Temp; 
 	}
-	
 }
