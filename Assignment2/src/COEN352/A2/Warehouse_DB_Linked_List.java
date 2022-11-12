@@ -6,10 +6,7 @@
 package COEN352.A2;
 import java.util.Arrays;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'master' of https://github.com/Magy2211/COEN352.git
 
 public class Warehouse_DB_Linked_List 
 
@@ -431,15 +428,8 @@ public class Warehouse_DB_Linked_List
 		switch(Attribute)
 		{
 			case "SKU":
-<<<<<<< HEAD
-				QuickSort InventorySort = new QuickSort();
-				InventorySort.sort(Temp);
-				
-				
-=======
 				// quick sorting the values of SKU in the Temp object 
 				qsort(Attribute,Temp,0,warehouse.size()-1); 
->>>>>>> branch 'master' of https://github.com/Magy2211/COEN352.git
 				break;
 				
 				/* 
@@ -450,27 +440,20 @@ public class Warehouse_DB_Linked_List
 			case "Description":
 				
 				break;
-
 			case "Unit Price":
 				
-
 				
 			case "Name":
 				
 				break;
-
 			case "Quantity in Stock": 
 				
-
 			case "UnitPrice":
 				
 				break;
 			case "QuantityInStock": 
 				
-
 				break;
-
-
 			case "InventoryValue":
 				
 				break;
@@ -484,7 +467,6 @@ public class Warehouse_DB_Linked_List
 				break;
 				
 			case "QuantityInReorder":
-
 				
 				break;
 			
