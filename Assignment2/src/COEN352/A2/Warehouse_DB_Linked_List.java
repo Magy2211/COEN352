@@ -301,6 +301,8 @@ public class Warehouse_DB_Linked_List
 	private double inventoryTotalValue; // will help in calculating total cost of the inventory
 	private int inventory_number_of_entries; // will help in calculating total value of the inventory
 	private Linked_List_Dictionary<String,Inventory> warehouse;  // warehouse object to store all inventory items
+	private BSTNode <String,Inventory> rt;
+	
 
 	// Database member function 
 	
@@ -489,5 +491,16 @@ public class Warehouse_DB_Linked_List
 				*/
 		}
 		return Temp; 
+	}
+	
+	public BSTNode<String, Inventory> createIndex(String Attribute){
+		 
+	}
+	
+	//Q2 
+	
+	public void query(String attribute, double perct) {
+		
+		
 	}
 }

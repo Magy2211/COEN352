@@ -45,8 +45,7 @@ class BSTTraverse {
 	}
 	
 	
-	static boolean checkBST(BSTNode root,
-	                 Integer low, Integer high) 
+	static boolean checkBST(BSTNode root,Integer low, Integer high) 
 	{
 	  if (root == null) 
 		  return true; // Empty subtree
