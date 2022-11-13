@@ -119,7 +119,7 @@ public class Warehouse_DB_Linked_List
 				
 				Inventory inventory_7 = new Inventory(); 
 				
-				inventory_7.setSKU("IN006"); 
+				inventory_7.setSKU("IN007"); 
 				inventory_7.setName("Item 7");
 				inventory_7.setDescription("Desc 7");
 				inventory_7.setUnitPrice(56.00);

@@ -4,7 +4,7 @@
     Copyright 2008-2011 by Clifford A. Shaffer
 */
 
-package coen352.ch5.bitree; 
+package COEN352.A2; 
 
 /** ADT for binary tree nodes */
 public interface BinNode<E> {
