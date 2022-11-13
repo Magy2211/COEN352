@@ -5,6 +5,7 @@
 
 package COEN352.A2;
 import java.util.Arrays;
+import java.lang.Math;
 
 
 
@@ -28,7 +29,7 @@ public class Warehouse_DB_Linked_List
 				
 				Inventory inventory_1 = new Inventory(); 
 				
-				inventory_1.setSKU("IN001"); 
+				inventory_1.setSKU("IN0001"); 
 				inventory_1.setName("Item 1");
 				inventory_1.setDescription("Desc 1");
 				inventory_1.setUnitPrice(51.00);
@@ -43,7 +44,7 @@ public class Warehouse_DB_Linked_List
 				
 				Inventory inventory_2 = new Inventory(); 
 				
-				inventory_2.setSKU("IN002"); 
+				inventory_2.setSKU("IN0002"); 
 				inventory_2.setName("Item 2");
 				inventory_2.setDescription("Desc 2");
 				inventory_2.setUnitPrice(93.00);
@@ -58,7 +59,7 @@ public class Warehouse_DB_Linked_List
 				
 				Inventory inventory_3 = new Inventory(); 
 				
-				inventory_3.setSKU("IN003"); 
+				inventory_3.setSKU("IN0003"); 
 				inventory_3.setName("Item 3");
 				inventory_3.setDescription("Desc 3");
 				inventory_3.setUnitPrice(57.00);
@@ -73,7 +74,7 @@ public class Warehouse_DB_Linked_List
 				
 				Inventory inventory_4 = new Inventory(); 
 				
-				inventory_4.setSKU("IN004"); 
+				inventory_4.setSKU("IN0004"); 
 				inventory_4.setName("Item 4");
 				inventory_4.setDescription("Desc 4");
 				inventory_4.setUnitPrice(19.00);
@@ -88,7 +89,7 @@ public class Warehouse_DB_Linked_List
 				
 				Inventory inventory_5 = new Inventory(); 
 				
-				inventory_5.setSKU("IN005"); 
+				inventory_5.setSKU("IN0005"); 
 				inventory_5.setName("Item 5");
 				inventory_5.setDescription("Desc 5");
 				inventory_5.setUnitPrice(75.00);
@@ -104,7 +105,7 @@ public class Warehouse_DB_Linked_List
 				
 				Inventory inventory_6 = new Inventory(); 
 				
-				inventory_6.setSKU("IN006"); 
+				inventory_6.setSKU("IN0006"); 
 				inventory_6.setName("Item 6");
 				inventory_6.setDescription("Desc 6");
 				inventory_6.setUnitPrice(11.00);
@@ -119,7 +120,7 @@ public class Warehouse_DB_Linked_List
 				
 				Inventory inventory_7 = new Inventory(); 
 				
-				inventory_7.setSKU("IN007"); 
+				inventory_7.setSKU("IN0007"); 
 				inventory_7.setName("Item 7");
 				inventory_7.setDescription("Desc 7");
 				inventory_7.setUnitPrice(56.00);
@@ -134,7 +135,7 @@ public class Warehouse_DB_Linked_List
 				
 				Inventory inventory_8 = new Inventory(); 
 				
-				inventory_8.setSKU("IN008"); 
+				inventory_8.setSKU("IN0008"); 
 				inventory_8.setName("Item 8");
 				inventory_8.setDescription("Desc 8");
 				inventory_8.setUnitPrice(38.00);
@@ -149,7 +150,7 @@ public class Warehouse_DB_Linked_List
 				
 				Inventory inventory_9 = new Inventory(); 
 				
-				inventory_9.setSKU("IN009"); 
+				inventory_9.setSKU("IN0009"); 
 				inventory_9.setName("Item 9");
 				inventory_9.setDescription("Desc 9");
 				inventory_9.setUnitPrice(59.00);
@@ -276,14 +277,16 @@ public class Warehouse_DB_Linked_List
 				warehouseDb.InsertRecord(inventory_1);
 				warehouseDb.InsertRecord(inventory_2);
 				warehouseDb.InsertRecord(inventory_3);
-				warehouseDb.InsertRecord(inventory_4);
+				warehouseDb.InsertRecord(inventory_7);
 				warehouseDb.InsertRecord(inventory_5);
 				warehouseDb.InsertRecord(inventory_6);
-				warehouseDb.InsertRecord(inventory_7);
+				warehouseDb.InsertRecord(inventory_4);
 				warehouseDb.InsertRecord(inventory_8);
 				warehouseDb.InsertRecord(inventory_9);
+				warehouseDb.InsertRecord(inventory_10);
+				warehouseDb.InsertRecord(inventory_11);
 				
-				Inventory [] sortedInventory = new Inventory[8];
+				Inventory [] sortedInventory = new Inventory[10];
 				sortedInventory = warehouseDb.CreateIndex("SKU"); 
 				
 				int i;
@@ -291,6 +294,9 @@ public class Warehouse_DB_Linked_List
 				{
 					sortedInventory[i].PrintRecord();
 				}
+				
+				warehouseDb.query("SKU", 0.37);
+				
 				
 				
 				
@@ -501,6 +507,12 @@ public class Warehouse_DB_Linked_List
 	
 	public void query(String attribute, double perct) {
 		
+		Inventory [] Temp = new Inventory[warehouse.size()];
+		Temp = CreateIndex(attribute);
 		
+		System.out.print(Temp.length);
+		double pivot = Math.floor(warehouse.size()*perct);
+	
+		Temp[(int) pivot].PrintRecord();
 	}
 }
