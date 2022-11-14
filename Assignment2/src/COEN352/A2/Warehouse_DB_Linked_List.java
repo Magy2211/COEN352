@@ -292,12 +292,14 @@ public class Warehouse_DB_Linked_List
 				int i;
 				for(i=0; i < sortedInventory.length ; i++) 
 				{
-					sortedInventory[i].PrintRecord();
+					System.out.print(sortedInventory[i].PrintRecord());
 				}
 				
-				warehouseDb.query("SKU", 0.37);
+				BSTNode<Inventory> Inv = new BSTNode<Inventory> ();
 				
+				Inv = warehouseDb.createIndex("SKU");
 				
+				warehouseDb.InOrderTraversing(Inv);
 				
 				
 	}
@@ -307,7 +309,6 @@ public class Warehouse_DB_Linked_List
 	private double inventoryTotalValue; // will help in calculating total cost of the inventory
 	private int inventory_number_of_entries; // will help in calculating total value of the inventory
 	private Linked_List_Dictionary<String,Inventory> warehouse;  // warehouse object to store all inventory items
-	private BSTNode <String,Inventory> rt;
 	
 
 	// Database member function 
@@ -394,6 +395,17 @@ public class Warehouse_DB_Linked_List
 				     while (A[++l].getSKU().compareTo(pivot.getSKU())<0);
 				     while ((r!=0) && (A[--r].getSKU().compareTo(pivot.getSKU())>0));
 				  }
+				  else if (Att == "Name")
+				  {
+					  while (A[++l].getName().compareTo(pivot.getName())<0);
+					  while ((r!=0) && (A[--r].getName().compareTo(pivot.getName())>0));
+				  }
+				  else if(Att == "Description")
+				  {
+					  while (A[++l].getDescription().compareTo(pivot.getDescription())<0);
+					  while ((r!=0) && (A[--r].getDescription().compareTo(pivot.getDescription())>0));
+				  }
+				  
 				  
 			DSutil.swap(A, l, r);       // Swap out-of-place values
 			  }
@@ -432,87 +444,75 @@ public class Warehouse_DB_Linked_List
 		 * 4. return the sorted temporary array 
 		 */
 		Inventory[] Temp = this.CopyList(); 
-		
-		switch(Attribute)
-		{
-			case "SKU":
-				// quick sorting the values of SKU in the Temp object 
-				qsort(Attribute,Temp,0,warehouse.size()-1); 
-				break;
-				
-				/* 
-			case "Name":
-				
-				break;
-				
-			case "Description":
-				
-				break;
-			case "Unit Price":
-				
-				
-			case "Name":
-				
-				break;
-			case "Quantity in Stock": 
-				
-			case "UnitPrice":
-				
-				break;
-			case "QuantityInStock": 
-				
-				break;
-			case "InventoryValue":
-				
-				break;
-				
-			case "ReorderQuantity":
-				
-				break;
-			
-			case "ReorderTime": 
-				
-				break;
-				
-			case "QuantityInReorder":
-				
-				break;
-			
-			case "Reorder Quantity":
-				
-				break;
-			
-			case "Reorder Time": 
-				
-				break;
-				
-			case "Quantity in Reorder":
-				
-				break;
-				
-				
-			default:
-				System.out.println("Invalid attribute!");
-				
-				*/
-		}
+		qsort(Attribute,Temp,0,warehouse.size()-1); 
 		return Temp; 
 	}
 	
-	public BSTNode<String, Inventory> createIndex(String Attribute){
+	//Q1.2 
+	public BSTNode<Inventory> createIndex(String Attribute){
 		 
+		BSTNode<Inventory> TreeRoot = new BSTNode<Inventory>();
+		Inventory [] CopyInv = CopyList();
+		
+	
+		for(int i=0; i<=CopyInv.length-1; i++) {
+			
+			inserthelp(Attribute,TreeRoot,CopyInv[i]);
+		}
+		
+		return TreeRoot;
 	}
+	
+	public void InOrderTraversing(BSTNode<Inventory> I) {
+		
+		if (I == null) return; // Empty subtree - do nothing
+		InOrderTraversing(I.left()); // Process left nodes
+		System.out.print(I.element().PrintRecord()); // Process root node
+		InOrderTraversing(I.right()); // Process all nodes in right
+		
+	}
+	
+	public void inserthelp(String Attribute,BSTNode<Inventory> rt,Inventory e) {
+		  if (rt == null) {
+			  
+			  rt = new BSTNode<Inventory> (e);
+		  }
+		  else {
+			  if(Attribute == "SKU") {
+				 
+				  if((rt.element().getSKU()).compareTo(e.getSKU())== 1) {
+					  //go right 
+					  if(rt.element() == null)
+					  {
+						  rt.setRight(new BSTNode<Inventory> (e));
+					  }
+					  else 
+						  inserthelp(Attribute,rt.right(),e);
+				  }
+				  else 
+					  //go left 
+					  if(rt.element() == null)
+					  {
+						  rt.setLeft(new BSTNode<Inventory> (e));
+					  }
+					  else 
+						  inserthelp(Attribute,rt.left(),e);
+					  
+			  }
+			  else if(Attribute == "Name")
+			  {}
+		  }
+		}
 	
 	//Q2 
 	
-	public void query(String attribute, double perct) {
+	public String query(String attribute, double perct) {
 		
 		Inventory [] Temp = new Inventory[warehouse.size()];
 		Temp = CreateIndex(attribute);
 		
-		System.out.print(Temp.length);
 		double pivot = Math.floor(warehouse.size()*perct);
 	
-		Temp[(int) pivot].PrintRecord();
+		return Temp[(int) pivot].PrintRecord();
 	}
 }
