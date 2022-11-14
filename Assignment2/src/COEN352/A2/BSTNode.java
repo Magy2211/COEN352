@@ -33,7 +33,7 @@ public class BSTNode<E> implements BinNode<E> {
 		  element = val; 
 	  }
 
-	  /** Return and set the key value */
+	  /** Return and seTthe key value */
 	  /*public K key() 
 	  { 
 		  return key; 
