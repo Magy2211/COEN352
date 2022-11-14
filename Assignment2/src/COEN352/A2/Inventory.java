@@ -67,7 +67,7 @@ public class Inventory
 	
 	public double getInventoryValue() {return InventoryValue;}
 		
-	public double ReorderQuantity() {return ReorderQuantity;}
+	public double getReorderQuantity() {return ReorderQuantity;}
 		
 	public int getReorderTime() {return ReorderTime;}
 		

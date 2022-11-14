@@ -219,11 +219,11 @@ public class Warehouse_DB_Linked_List
 				warehouseDb.InsertRecord(inventory_7);
 				warehouseDb.InsertRecord(inventory_8);
 				warehouseDb.InsertRecord(inventory_9);
+				warehouseDb.InsertRecord(inventory_10);
 				warehouseDb.InsertRecord(inventory_11);
-				warehouseDb.InsertRecord(inventory_12);
 				System.out.println("-------------------------------------------------------------------------- ");
 				
-				// Verifying the total number and value of the added items in the database 
+				/* Verifying the total number and value of the added items in the database 
 				System.out.println(" Results: ");
 				System.out.println(" There are " + warehouseDb.TotalInventoryQuantity() + " inventories in this database.");
 				System.out.println(" The total value of the inventories is: " + warehouseDb.TotalInventoryValue());     
@@ -271,20 +271,10 @@ public class Warehouse_DB_Linked_List
 				warehouseDb.findRecord("IN001");
 				System.out.println(" There are " + warehouseDb.TotalInventoryQuantity() + " inventories in this database.");
 				System.out.println(" The total value of the inventories is: " + warehouseDb.TotalInventoryValue());
+				*/
 				
 				System.out.println("-------------------------------------------------------------------------- ");
 				System.out.println("Testing the CreateIndex function....");
-				warehouseDb.InsertRecord(inventory_1);
-				warehouseDb.InsertRecord(inventory_2);
-				warehouseDb.InsertRecord(inventory_3);
-				warehouseDb.InsertRecord(inventory_7);
-				warehouseDb.InsertRecord(inventory_5);
-				warehouseDb.InsertRecord(inventory_6);
-				warehouseDb.InsertRecord(inventory_4);
-				warehouseDb.InsertRecord(inventory_8);
-				warehouseDb.InsertRecord(inventory_9);
-				warehouseDb.InsertRecord(inventory_10);
-				warehouseDb.InsertRecord(inventory_11);
 				
 				Inventory [] sortedInventory = new Inventory[10];
 				sortedInventory = warehouseDb.CreateIndex("SKU"); 
@@ -404,6 +394,37 @@ public class Warehouse_DB_Linked_List
 					  while (A[++l].getDescription().compareTo(pivot.getDescription())<0);
 					  while ((r!=0) && (A[--r].getDescription().compareTo(pivot.getDescription())>0));
 				  }
+				  else if(Att == "Unit Price")
+				  {
+					  while (A[++l].getUnitPrice() < pivot.getUnitPrice());
+					  while ((r!=0) && (A[--r].getUnitPrice()> pivot.getUnitPrice()));
+				  }
+				  else if(Att == "Quantity in stock")
+				  {
+					  while (A[++l].getQuantityInStock() < pivot.getQuantityInStock());
+					  while ((r!=0) && (A[--r].getQuantityInStock()> pivot.getUnitPrice()));
+				  }
+				  else if(Att == "Inventory Value")
+				  {
+					  while (A[++l].getInventoryValue() < pivot.getInventoryValue());
+					  while ((r!=0) && (A[--r].getInventoryValue())> pivot.getInventoryValue());
+				  }
+				  else if(Att == "Reorder Quantity")
+				  {
+					  while (A[++l].getReorderQuantity() < pivot.getReorderQuantity());
+					  while ((r!=0) && (A[--r].getReorderQuantity())> pivot.getReorderQuantity());
+				  }
+				  else if(Att == "Reorder Time")
+				  {
+					  while (A[++l].getReorderTime() < pivot.getReorderTime());
+					  while ((r!=0) && (A[--r].getReorderTime())> pivot.getReorderTime());
+				  }
+				  else if(Att == "Quantity in Reorder")
+				  {
+					  while (A[++l].getQuantityInReorder() < pivot.getQuantityInReorder());
+					  while ((r!=0) && (A[--r].getQuantityInReorder())> pivot.getQuantityInReorder());
+				  }
+				  
 				  
 				  
 			DSutil.swap(A, l, r);       // Swap out-of-place values
