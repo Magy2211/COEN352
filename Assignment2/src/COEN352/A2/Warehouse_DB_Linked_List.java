@@ -295,9 +295,8 @@ public class Warehouse_DB_Linked_List
 					System.out.print(sortedInventory[i].PrintRecord());
 				}
 				
-				BSTNode<Inventory> Inv = new BSTNode<Inventory> ();
-				
-				Inv = warehouseDb.createIndex("SKU");
+				BSTNode<Inventory> Inv = warehouseDb.createIndex("InventoryValue");
+
 				
 				warehouseDb.InOrderTraversing(Inv);
 				
@@ -458,6 +457,8 @@ public class Warehouse_DB_Linked_List
 		for(int i=0; i<=CopyInv.length-1; i++) {
 			
 			inserthelp(Attribute,TreeRoot,CopyInv[i]);
+			
+
 		}
 		return TreeRoot;
 	}
@@ -472,16 +473,16 @@ public class Warehouse_DB_Linked_List
 	}
 	
 	public void inserthelp(String Attribute,BSTNode<Inventory> rt,Inventory e) {
-		  if (rt == null) {
+		  if (rt.element() == null) {
 			  
-			  rt = new BSTNode<Inventory> (e);
+			  rt.setElement(e);
 		  }
 		  else {
-			  if(Attribute == "SKU") {
+			  if(Attribute == "InventoryValue") {
 				 
-				  if((rt.element().getSKU()).compareTo(e.getSKU())== 1) {
+				  if(rt.element().getInventoryValue() <= e.getInventoryValue()) {
 					  //go right 
-					  if(rt.element() == null)
+					  if(rt.right() == null)
 					  {
 						  rt.setRight(new BSTNode<Inventory> (e));
 					  }
@@ -490,7 +491,7 @@ public class Warehouse_DB_Linked_List
 				  }
 				  else 
 					  //go left 
-					  if(rt.element() == null)
+					  if(rt.left() == null)
 					  {
 						  rt.setLeft(new BSTNode<Inventory> (e));
 					  }
