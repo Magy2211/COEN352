@@ -60,8 +60,6 @@ private E findhelp(BSTNode<K,E> rt, K k) {
   else 
 	  return findhelp(rt.right(), k);
 }
-
-
 private BSTNode<K,E> inserthelp(BSTNode<K,E> rt, K k, E e) {
   if (rt == null) 
 	  return new BSTNode<K,E>(k, e);

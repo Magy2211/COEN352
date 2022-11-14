@@ -459,7 +459,6 @@ public class Warehouse_DB_Linked_List
 			
 			inserthelp(Attribute,TreeRoot,CopyInv[i]);
 		}
-		
 		return TreeRoot;
 	}
 	

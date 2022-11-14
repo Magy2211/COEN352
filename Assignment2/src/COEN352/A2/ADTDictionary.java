@@ -1,7 +1,5 @@
 package COEN352.A2;
 
-
-
 /** Source code example for "A Practical Introduction to Data
 Structures and Algorithm Analysis, 3rd Edition (Java)" 
 by Clifford A. Shaffer
@@ -37,10 +35,5 @@ public E find(Key k);
 
 /** @return The number of records in the dictionary. */
 public int size();
-
-
-
-
-	
 
 };
