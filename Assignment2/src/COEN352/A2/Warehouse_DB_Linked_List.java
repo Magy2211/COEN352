@@ -287,18 +287,15 @@ public class Warehouse_DB_Linked_List
 				warehouseDb.InsertRecord(inventory_11);
 				
 				Inventory [] sortedInventory = new Inventory[10];
-				sortedInventory = warehouseDb.CreateIndex("SKU"); 
+				sortedInventory = warehouseDb.CreateIndex("REO"); 
 				
 				int i;
 				for(i=0; i < sortedInventory.length ; i++) 
 				{
-					sortedInventory[i].PrintRecord();
+					System.out.print(sortedInventory[i].PrintRecord());
 				}
 				
-				warehouseDb.query("SKU", 0.37);
-				
-				
-				
+				System.out.print(warehouseDb.query("REO", 0.32));
 				
 	}
 	
@@ -394,6 +391,17 @@ public class Warehouse_DB_Linked_List
 				     while (A[++l].getSKU().compareTo(pivot.getSKU())<0);
 				     while ((r!=0) && (A[--r].getSKU().compareTo(pivot.getSKU())>0));
 				  }
+				  else if (Att == "Name")
+				  {
+					  while (A[++l].getName().compareTo(pivot.getName())<0);
+					  while ((r!=0) && (A[--r].getName().compareTo(pivot.getName())>0));
+				  }
+				  else if(ATT == "Description")
+				  {
+					  while (A[++l].getDescription().compareTo(pivot.getDescription())<0);
+					  while ((r!=0) && (A[--r].getDescription().compareTo(pivot.getDescription())>0));
+				  }
+				  
 				  
 			DSutil.swap(A, l, r);       // Swap out-of-place values
 			  }
@@ -432,12 +440,13 @@ public class Warehouse_DB_Linked_List
 		 * 4. return the sorted temporary array 
 		 */
 		Inventory[] Temp = this.CopyList(); 
+		qsort(Attribute,Temp,0,warehouse.size()-1); 
 		
 		switch(Attribute)
 		{
 			case "SKU":
 				// quick sorting the values of SKU in the Temp object 
-				qsort(Attribute,Temp,0,warehouse.size()-1); 
+				
 				break;
 				
 				/* 
@@ -488,31 +497,44 @@ public class Warehouse_DB_Linked_List
 				
 			case "Quantity in Reorder":
 				
-				break;
+				break;*/
 				
 				
 			default:
 				System.out.println("Invalid attribute!");
-				
-				*/
+				break; 
 		}
 		return Temp; 
 	}
 	
-	public BSTNode<String, Inventory> createIndex(String Attribute){
+	//Q1.2 
+	public BSTNode<Inventory> createIndex(String Attribute){
 		 
+		
+		
+		
 	}
+	private void inserthelp(String Attribute,BSTNode<Inventory> rt,Inventory e) {
+		  if (rt == null) {
+			  rt.setElement(e);
+		  }
+		  else {
+				  if (rt.element().compareTo(e) > 0)
+				    rt.setLeft(inserthelp(Attribute,rt.left(),e)); // set of the left is to set to the root of the left subtree
+				  else
+				    rt.setRight(inserthelp(Attribute,rt.right(),e));// set of the right is to set to the root of the right subtree
+		  }
+		}
 	
 	//Q2 
 	
-	public void query(String attribute, double perct) {
+	public String query(String attribute, double perct) {
 		
 		Inventory [] Temp = new Inventory[warehouse.size()];
 		Temp = CreateIndex(attribute);
 		
-		System.out.print(Temp.length);
 		double pivot = Math.floor(warehouse.size()*perct);
 	
-		Temp[(int) pivot].PrintRecord();
+		return Temp[(int) pivot].PrintRecord();
 	}
 }

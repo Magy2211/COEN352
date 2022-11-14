@@ -5,12 +5,12 @@ package COEN352.A2;
     Copyright 2008-2011 by Clifford A. Shaffer
 */
 /** Binary tree node implementation: Pointers to children */
-public class BSTNode<K,E> implements BinNode<E> {
+public class BSTNode<E> implements BinNode<E> {
 	  
-	  private K key;              // Key for this node
+	  //private K key;              // Key for this node
 	  private E element;          // Element for this node
-	  private BSTNode<K,E> left;  // Pointer to left child
-	  private BSTNode<K,E> right; // Pointer to right child
+	  private BSTNode<E> left;  // Pointer to left child
+	  private BSTNode<E> right; // Pointer to right child
 
 	  /** Constructors */
 	  public BSTNode()
@@ -18,23 +18,23 @@ public class BSTNode<K,E> implements BinNode<E> {
 		  left = right = null; 
 	  }
 	  
-	  public BSTNode(K k, E val)
+	  public BSTNode( E val)
 	  { 
 		  left = right = null; 
-		  key = k; 
+		  //key = k; 
 		  element = val; 
 	  }
 	  
-	  public BSTNode(K k, E val, BSTNode<K,E> l, BSTNode<K,E> r) 
+	  public BSTNode(E val, BSTNode<E> l, BSTNode<E> r) 
 	  { 
 		  left = l; 
 		  right = r; 
-		  key = k; 
+		  //key = k; 
 		  element = val; 
 	  }
 
 	  /** Return and set the key value */
-	  public K key() 
+	  /*public K key() 
 	  { 
 		  return key; 
 	  }
@@ -42,7 +42,7 @@ public class BSTNode<K,E> implements BinNode<E> {
 	  public void setKey(K k) 
 	  { 
 		  key = k; 
-	  }
+	  }*/
 
 	  /** Return and set the element value */
 	  public E element() 
@@ -53,12 +53,12 @@ public class BSTNode<K,E> implements BinNode<E> {
 	  public void setElement(E v) { element = v; }
 
 	  /** Return and set the left child */
-	  public BSTNode<K,E> left() { return left; }
-	  public void setLeft(BSTNode<K,E> p) { left = p; }
+	  public BSTNode<E> left() { return left; }
+	  public void setLeft(BSTNode<E> p) { left = p; }
 
 	  /** Return and set the right child */
-	  public BSTNode<K,E> right() { return right; }
-	  public void setRight(BSTNode<K,E> p) { right = p; }
+	  public BSTNode<E> right() { return right; }
+	  public void setRight(BSTNode<E> p) { right = p; }
 
 	  /** Return true if this is a leaf node */
 	  public boolean isLeaf()
