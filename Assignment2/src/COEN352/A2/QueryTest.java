@@ -210,7 +210,7 @@ public class QueryTest {
 			
 			Inventory TestElement2 = new Inventory("IN0005","Item 5","Desc 5",75.00,62,4650.00,39,12,50,false);
 			
-			String returnedInv2 = warehouseDb.query("Reo", 0.37);
+			String returnedInv2 = warehouseDb.query("UnitPrice", 0.37);
 			
 			assertEquals(TestElement2.PrintRecord(),returnedInv2," values are not in ascending order."); 
 		}
