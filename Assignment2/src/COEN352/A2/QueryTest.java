@@ -208,9 +208,9 @@ public class QueryTest {
 		
 		public void testUnitPriceValue() {
 			
-			Inventory TestElement2 = new Inventory("IN0005","Item 5","Desc 5",75.00,62,4650.00,39,12,50,false);
+			Inventory TestElement2 = new Inventory("IN0001","Item 1","Desc 1",51.00,25,1275.00,29,13,50,false);
 			
-			String returnedInv2 = warehouseDb.query("UnitPrice", 0.37);
+			String returnedInv2 = warehouseDb.query("Unit Price", 0.37);
 			
 			assertEquals(TestElement2.PrintRecord(),returnedInv2," values are not in ascending order."); 
 		}

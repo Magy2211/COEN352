@@ -424,9 +424,8 @@ public class Warehouse_DB_Linked_List
 					  while (A[++l].getQuantityInReorder() < pivot.getQuantityInReorder());
 					  while ((r!=0) && (A[--r].getQuantityInReorder())> pivot.getQuantityInReorder());
 				  }
-				  
-				  
-				  
+				  else System.out.println(" Invalid attribute. Please enter a valid attribute.");
+	
 			DSutil.swap(A, l, r);       // Swap out-of-place values
 			  }
 			
@@ -494,13 +493,115 @@ public class Warehouse_DB_Linked_List
 	}
 	
 	public void inserthelp(String Attribute,BSTNode<Inventory> rt,Inventory e) {
-		  if (rt.element() == null) {
-			  
-			  rt.setElement(e);
-		  }
+		  if (rt.element() == null) {rt.setElement(e);}
 		  else {
-			  if(Attribute == "InventoryValue") {
-				 
+			  if(Attribute == "SKU") {
+					 
+				  if(rt.element().getSKU().compareTo(e.getSKU()) <= 0) {
+					  //go right 
+					  if(rt.right() == null)
+					  {
+						  rt.setRight(new BSTNode<Inventory> (e));
+					  }
+					  else 
+						  inserthelp(Attribute,rt.right(),e);
+				  }
+				  else 
+					  //go left 
+					  if(rt.left() == null)
+					  {
+						  rt.setLeft(new BSTNode<Inventory> (e));
+					  }
+					  else 
+						  inserthelp(Attribute,rt.left(),e);
+					  
+			  }
+			  else if(Attribute == "Name") {
+					 
+				  if(rt.element().getName().compareTo(e.getName()) <= 0) {
+					  //go right 
+					  if(rt.right() == null)
+					  {
+						  rt.setRight(new BSTNode<Inventory> (e));
+					  }
+					  else 
+						  inserthelp(Attribute,rt.right(),e);
+				  }
+				  else 
+					  //go left 
+					  if(rt.left() == null)
+					  {
+						  rt.setLeft(new BSTNode<Inventory> (e));
+					  }
+					  else 
+						  inserthelp(Attribute,rt.left(),e);
+					  
+			  }
+			  else if(Attribute == "Description") {
+					 
+				  if(rt.element().getDescription().compareTo(e.getDescription()) <= 0) {
+					  //go right 
+					  if(rt.right() == null)
+					  {
+						  rt.setRight(new BSTNode<Inventory> (e));
+					  }
+					  else 
+						  inserthelp(Attribute,rt.right(),e);
+				  }
+				  else 
+					  //go left 
+					  if(rt.left() == null)
+					  {
+						  rt.setLeft(new BSTNode<Inventory> (e));
+					  }
+					  else 
+						  inserthelp(Attribute,rt.left(),e);
+					  
+			  }
+			  else if(Attribute == "Unit Price") {
+					 
+				  if(rt.element().getUnitPrice() <= e.getUnitPrice()) {
+					  //go right 
+					  if(rt.right() == null)
+					  {
+						  rt.setRight(new BSTNode<Inventory> (e));
+					  }
+					  else 
+						  inserthelp(Attribute,rt.right(),e);
+				  }
+				  else 
+					  //go left 
+					  if(rt.left() == null)
+					  {
+						  rt.setLeft(new BSTNode<Inventory> (e));
+					  }
+					  else 
+						  inserthelp(Attribute,rt.left(),e);
+					  
+			  }
+			  else if(Attribute == "Quantity in stock") {
+					 
+				  if(rt.element().getQuantityInStock() <= e.getQuantityInStock()) {
+					  //go right 
+					  if(rt.right() == null)
+					  {
+						  rt.setRight(new BSTNode<Inventory> (e));
+					  }
+					  else 
+						  inserthelp(Attribute,rt.right(),e);
+				  }
+				  else 
+					  //go left 
+					  if(rt.left() == null)
+					  {
+						  rt.setLeft(new BSTNode<Inventory> (e));
+					  }
+					  else 
+						  inserthelp(Attribute,rt.left(),e);
+					  
+			  }
+			  else if(Attribute == "Inventory Value") {
+					 
 				  if(rt.element().getInventoryValue() <= e.getInventoryValue()) {
 					  //go right 
 					  if(rt.right() == null)
@@ -520,8 +621,71 @@ public class Warehouse_DB_Linked_List
 						  inserthelp(Attribute,rt.left(),e);
 					  
 			  }
-			  else if(Attribute == "Name")
-			  {}
+			  
+			  else if(Attribute == "Reorder Quantity") {
+				 
+				  if(rt.element().getReorderQuantity() <= e.getReorderQuantity()) {
+					  //go right 
+					  if(rt.right() == null)
+					  {
+						  rt.setRight(new BSTNode<Inventory> (e));
+					  }
+					  else 
+						  inserthelp(Attribute,rt.right(),e);
+				  }
+				  else 
+					  //go left 
+					  if(rt.left() == null)
+					  {
+						  rt.setLeft(new BSTNode<Inventory> (e));
+					  }
+					  else 
+						  inserthelp(Attribute,rt.left(),e);
+			  }
+			  else if(Attribute == "Reorder Time") {
+					 
+				  if(rt.element().getReorderTime() <= e.getReorderTime()) {
+					  //go right 
+					  if(rt.right() == null)
+					  {
+						  rt.setRight(new BSTNode<Inventory> (e));
+					  }
+					  else 
+						  inserthelp(Attribute,rt.right(),e);
+				  }
+				  else 
+					  //go left 
+					  if(rt.left() == null)
+					  {
+						  rt.setLeft(new BSTNode<Inventory> (e));
+					  }
+					  else 
+						  inserthelp(Attribute,rt.left(),e);
+					  
+			  }
+			  else if(Attribute == "Quantity in Reorder") {
+					 
+				  if(rt.element().getQuantityInReorder() <= e.getQuantityInReorder()) {
+					  //go right 
+					  if(rt.right() == null)
+					  {
+						  rt.setRight(new BSTNode<Inventory> (e));
+					  }
+					  else 
+						  inserthelp(Attribute,rt.right(),e);
+				  }
+				  else 
+					  //go left 
+					  if(rt.left() == null)
+					  {
+						  rt.setLeft(new BSTNode<Inventory> (e));
+					  }
+					  else 
+						  inserthelp(Attribute,rt.left(),e);
+					  
+			  }
+			  else System.out.println (" Invalid attribute, please enter a valid attribute.");
+			  
 		  }
 		}
 	
