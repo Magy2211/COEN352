@@ -1,0 +1,68 @@
+Courses and their PRE-REQS 
+
+
+A. Cegep Classes or Year 0 classes
+
+1. MATH 204 (Cegeo MATH 105)
+
+B. Engineering General classes 
+
+1. ENGR 290
+
+
+
+Computer engineering core classes: 
+
+1. COEN 212 --> MATH 204
+
+2. COEN 231 --> MATH 204 
+
+4. COEN 243 --> MATH 204
+
+5. COEN 244 --> COEN 243 or MIAE 215
+
+6. COEN 311 --> COEN 212, COEN 243
+
+7. COEN 313 --> COEN 212, COEN 231
+
+8. COEN 316 --> COEN 311, COEN 313
+
+9. COEN 317 --> COEN 311 or COMP 228 or SOEN 228 , COEN 313
+
+10. COEN 320--> COEN 346 or COMP 346
+
+11. COEN 346 -->  COEN 311, COMP 352 or COEN 352 
+
+12. COEN 352 --> COEN 231, COEN 244
+
+13. COEN 366 --> COEN 346
+
+14. COEN 390 --> COEN 311. COEN 352, ENGR 290
+
+15. COEN 413 --> COEN 313 
+
+16. COEN 415 --> ELEC 311
+
+17. COEN 421 --> COEN 317, COEN 320 ; SOEN 341 (co-requisite ?) 
+
+18. COEN 422 --> COEN 346; ELEC 372 (co-requisite ?)
+
+19. COEN 424 --> COEN 346
+
+20. COEN 432 --> COEN 352 or COMP 352
+
+21. COEN 433 --> COEN 212, COEN 244
+
+22. COEN 434 --> COEN 244 and ENGR 290 or BIOL 261 and COMP 249
+
+23. COEN 446 -->  COEN 366 or 445 or ELEC 366 or 463
+
+24. COEN 447 --> COEN 317; COEN 366 or 445 or ELEC 366 or 463.
+
+25. COEN 448 -->  SOEN 341
+
+26. COEN 451 --> COEN 212; ELEC 311 (Co-requisite ?)
+
+27. COEN 490 --> ENGR 301, ENGR 371; COEN 390; SOEN 341. you also need min 75 credits and completed C-edge internship 
+
+28. COEN 498 --> Permission from the Department 
