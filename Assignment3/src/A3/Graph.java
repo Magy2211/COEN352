@@ -1,4 +1,4 @@
-package coen352.ch11.graph.am;
+package A3;
 
 /** Source code example for "A Practical Introduction to Data
     Structures and Algorithm Analysis, 3rd Edition (Java)" 
