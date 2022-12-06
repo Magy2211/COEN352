@@ -138,10 +138,6 @@ public class GraphTest
 		static void PostVisit(Graph G, int v) {
 		  out.append(v + "pos "); // subject to the application 
 		}
-
-		
-		
-		
 		
 		 public boolean isCyclic(Graph G, int start) {
 			
@@ -221,9 +217,6 @@ public class GraphTest
 		    if (G.getMark(v) == UNVISITED)
 		      DFS(G, v);
 		}
-		
-		
-		
 		
 		
 		/**
@@ -334,8 +327,6 @@ public class GraphTest
 	    out = new StringBuffer(100);
 	  }
 	
-	  
-	  
 	  @Test
 	  public void testConnectComponent() throws IOException {
 		    BufferedReader f;
@@ -390,9 +381,7 @@ public class GraphTest
 			topsortQueue(G);
 			assertEquals( "0 1 2 5 3 4 6 ", out.toString());
 	}
-	  
-	
-	  
+	 
 	  //@Test
 		 public void testCycle() throws IOException{
 				BufferedReader f;

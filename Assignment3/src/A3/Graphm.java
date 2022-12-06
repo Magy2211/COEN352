@@ -70,4 +70,18 @@ class Graphm implements Graph { // Graph: Adjacency matrix
   public int getMark(int v) { return Mark[v]; }
   
   public int incrCount(int w) {return ++Count[w];}
+  
+  public boolean isPrerequisite(String SourceCourse, String destinationCourse)
+  {
+	  boolean isPrereq; 
+	  
+	 // Algorithm 
+	  // loop through the verteces of the sourcecourse 
+	  // if the linked course corresponds to the destination course, return isPrereq = true; 
+	  // else return isPrereq = false; 
+	  
+	  
+	
+	  
+  }
 }
