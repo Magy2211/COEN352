@@ -3,13 +3,14 @@ Courses and their PRE-REQS
 
 A. Cegep Classes or Year 0 classes
 
-1. MATH 204 (Cegeo MATH 105)
+1. MATH 204 (Cegep MATH 105)
 
 B. Engineering General classes 
 
 1. ENGR 290
-
-
+2. ENGR 301 
+3. ENGR 371 
+4. SOEN 341
 
 Computer engineering core classes: 
 
