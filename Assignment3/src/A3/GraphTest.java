@@ -76,12 +76,6 @@ public class GraphTest
 			  return G;
 	}
 	
-	// making the graph from the file created 
-	
-	BufferedReader f;
-	f = new BufferedReader(new InputStreamReader (new FileInputStream("coen_course.gph")));
-	Graph G = new Graphm(); 
-	createGraph(f,G); 
 	
 	static void Gprint(Graph G, StringBuffer out) {
 		  int i, j;
@@ -386,14 +380,31 @@ public class GraphTest
 			assertEquals( "0 1 2 5 3 4 6 ", out.toString());
 	}
 	 **/
+	 /**
 	  //@Test
 		 public void testCycle() throws IOException{
 				BufferedReader f;
-				f = new BufferedReader(new InputStreamReader(new FileInputStream("testfile-spath-cycle.gph")));
+				f = new BufferedReader(new InputStreamReader(new FileInputStream("coen_course.gph")));
 				Graph G = new Graphm();
 				createGraph(f, G);
 				
 				assertEquals(isCyclic(G, 0), true);
+		}
+		 */
+	 
+		//@Test
+	 
+		 public void testisPrerequisite() throws IOException{
+				BufferedReader f;
+				f = new BufferedReader(new InputStreamReader(new FileInputStream("coen_course.gph")));
+				Graph G = new Graphm();
+				createGraph(f, G);
+			
+				assertEquals(true,G.isPrerequisite("COEN212","COEN313"), "Test failed, The course is a prerequisite even if it should not be");
+				assertEquals(true,G.isPrerequisite("COEN311","COEN316"), "Test failed, The course is a prerequisite even if it should not be");
+				assertEquals(false,G.isPrerequisite("COEN317","COEN490"), "Test failed, The course is a prerequisite even if it should not be");
+				assertEquals(false,G.isPrerequisite("COEN231","COEN346"), "Test failed, The course is a prerequisite even if it should not be");
+				
 		}
 	  
 	
