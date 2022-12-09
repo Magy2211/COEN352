@@ -76,6 +76,13 @@ public class GraphTest
 			  return G;
 	}
 	
+	// making the graph from the file created 
+	
+	BufferedReader f;
+	f = new BufferedReader(new InputStreamReader (new FileInputStream("coen_course.gph")));
+	Graph G = new Graphm(); 
+	createGraph(f,G); 
+	
 	static void Gprint(Graph G, StringBuffer out) {
 		  int i, j;
 		
@@ -209,6 +216,7 @@ public class GraphTest
 			}
 		}
 		*/
+		 
 		
 		void graphTraverse(Graph G) {
 		  int v;
@@ -218,8 +226,7 @@ public class GraphTest
 		    if (G.getMark(v) == UNVISITED)
 		      DFS(G, v);
 		}
-		
-		
+	
 		/**
 		 *  Breadth first (queue-based) search
 		 */
@@ -265,7 +272,7 @@ public class GraphTest
 //			  printout(v);                 // PostVisit for Vertex v
 //		}
 //		
-		
+		/*
 		static void topsort(Graph G) { // Recursive topological sort
 			  for (int i=0; i<G.n(); i++)  // Initialize Mark array
 			    G.setMark(i, UNVISITED);
@@ -282,7 +289,7 @@ public class GraphTest
 			  
 			  printout(v);                 // PostVisit for Vertex v
 		}
-		
+		*/
 	
 		/**
 		 * topological sort using queue without recursion  
@@ -318,7 +325,7 @@ public class GraphTest
 	  
 	 static StringBuffer out;
 	  
-	 @BeforeEach
+	/** @BeforeEach
 	  public void setUp()
 	  {
 	    out = new StringBuffer(100);
@@ -357,8 +364,7 @@ public class GraphTest
 			    
 	  }
 	  **/
-	  
-	  @Test
+	 /** @Test
 	  public void testTopSort() throws IOException {
 			BufferedReader f;
 			f = new BufferedReader(new InputStreamReader(new FileInputStream("testfile-topsort.gph")));
