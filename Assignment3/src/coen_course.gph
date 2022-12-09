@@ -1,6 +1,6 @@
-# Graph for COEN courses.
-36                  # Number of vertices (marks)
-D                   # Directed Weighted Graph
+#Graph for COEN course sequence 
+36                  # Number of vertices (marks) 
+D                   # Directed Graph
 MATH204 COEN212
 MATH204 COEN231
 MATH204 COEN243
@@ -46,4 +46,4 @@ COEN366 COEN447
 ENGR301 COEN490
 ENGR371 COEN490
 COEN390 COEN490
-DEPTMNT COEN498
+DPT_APR COEN498

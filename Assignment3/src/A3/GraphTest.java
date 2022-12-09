@@ -25,7 +25,7 @@ import java.util.*;
 public class GraphTest
    
 {
-
+	
 	static final int UNVISITED = 0;
 	static final int VISITED = 1;
 	
@@ -315,7 +315,11 @@ public class GraphTest
 	   * method, so that all the variables are cleanly initialized for
 	   * each test.
 	   */
-	  
+	 BufferedReader f; 
+	 f = new BudderedReader(new InputStreamReader(new FileInputStream("coen_course.gph")));
+	 
+	 Graphm G = new Graphm();
+	 createGraph (f, G);
 	 static StringBuffer out;
 	  
 	 @BeforeEach
