@@ -5,6 +5,9 @@ package A3;
     by Clifford A. Shaffer
     Copyright 2008-2011 by Clifford A. Shaffer
 */
+import java.lang.String; 
+import A3.AStack; 
+import A3.ADTStack;
 
 class Graphm implements Graph { // Graph: Adjacency matrix
   private int[][] matrix;                // The edge matrix
@@ -44,10 +47,11 @@ class Graphm implements Graph { // Graph: Adjacency matrix
 
   public boolean isEdge(int i, int j) // Is (i, j) an edge?
     { return matrix[i][j] != 0; }
+ 
   
   // Set edge weight
   public void setEdge(int i, int j, int wt) {
-    assert wt!=0 : "Cannot set weight to 0";
+    assert wt!= 0 : "Cannot set weight to 0";
     if (matrix[i][j] == 0) numEdge++;
     matrix[i][j] = wt;
   }
@@ -70,4 +74,48 @@ class Graphm implements Graph { // Graph: Adjacency matrix
   public int getMark(int v) { return Mark[v]; }
   
   public int incrCount(int w) {return ++Count[w];}
+  
+  
+  //using DFS 
+  public String getPrerequisitePath(String courseCode) 
+  {
+	  ADTStack<String> stack = new AStack<String>(100);
+	  
+	  String Path;
+	  int prerequisitesCount = 0; 
+	  
+	  int Index = getIndex(courseCode);
+	  
+	  if(getIndex(courseCode) != -1)
+	  {
+		 stack.push(courseCode); 
+		 
+		 while(stack.length() > 0) {
+				String v = stack.topValue();
+				stack.pop();
+				setMark(v, VISITED);
+				int temp = v; 
+				for (int w = first(temp); w < 100; w = next(temp,w)) {
+				    if (getMark(w) == UNVISITED) { // Put next to stack
+				    	
+				    	stack.push(w);
+				    	setMark(w, VISITED);
+				    	
+				    	int k = first(w); 
+				    	while(k<100) {
+				    		 if (getMark(k) == UNVISITED) {
+				    			 setMark(k, VISITED);
+				    			 stack.push(k);
+				    			 temp = k;
+				    			 break;
+				    		 }
+				    		 k = next(w, k);
+				    	}
+				    }
+				 }	 
+		 }
+		 Path = stack.toString(); 
+	  }
+	  
+  }
 }
