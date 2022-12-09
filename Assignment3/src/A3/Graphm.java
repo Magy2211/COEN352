@@ -6,8 +6,10 @@ package A3;
     Copyright 2008-2011 by Clifford A. Shaffer
 */
 
-class Graphm implements Graph { private static final String String = null;
-// Graph: Adjacency matrix
+class Graphm implements Graph  // Graph: Adjacency matrix
+
+{ 
+
   private int [][] matrix;                // The edge matrix
   private int numEdge;                   // Number of edges
   public int[] Mark;                     // The mark array
