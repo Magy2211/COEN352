@@ -5,10 +5,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import A3.ADTStack; 
+import A3.AStack; 
 
-//import coen352.ch4.queue.*;
-import A3.AStack;
-import A3.ADTStack;
+
 
 /** Source code example for "A Practical Introduction to Data
     Structures and Algorithm Analysis, 3rd Edition (Java)" 
@@ -139,10 +139,6 @@ public class GraphTest
 		static void PostVisit(Graph G, int v) {
 		  out.append(v + "pos "); // subject to the application 
 		}
-
-		
-		
-		
 		
 		 public boolean isCyclic(Graph G, int start) {
 			
@@ -224,12 +220,10 @@ public class GraphTest
 		}
 		
 		
-		
-		
-		
 		/**
 		 *  Breadth first (queue-based) search
 		 */
+		/**
 		static void BFS(Graph G, int start) {
 		  ADTQueue<Integer> Q = new AQueue<Integer>(G.n());
 		  Q.enqueue(start);
@@ -246,7 +240,7 @@ public class GraphTest
 		    PostVisit(G, v);          // Take appropriate action
 		  }
 		}
-		
+		*/ 
 		
 		static void printout(int v) {
 			  out.append(v + " ");
@@ -293,7 +287,7 @@ public class GraphTest
 		/**
 		 * topological sort using queue without recursion  
 		 */
-		static void topsortQueue(Graph G) { // Topological sort: Queue
+		/** static void topsortQueue(Graph G) { // Topological sort: Queue
 			  ADTQueue<Integer> Q = new AQueue<Integer>(G.n());
 			  int[] Count = new int[G.n()];
 			  int v;
@@ -316,11 +310,6 @@ public class GraphTest
 			    }
 			  }
 			}
-		
-		
-		
-		  
-		
 	  /**
 	   * This method is automatically called once before each test case
 	   * method, so that all the variables are cleanly initialized for
@@ -339,8 +328,6 @@ public class GraphTest
 	    out = new StringBuffer(100);
 	  }
 	
-	  
-	  
 	  @Test
 	  public void testConnectComponent() throws IOException {
 		    BufferedReader f;
@@ -364,7 +351,7 @@ public class GraphTest
 	  }
 	  
 	  //@Test
-	  public void testBFS() throws IOException {
+	  /** public void testBFS() throws IOException {
 			BufferedReader f;
 			f = new BufferedReader(new InputStreamReader(new FileInputStream("testfile-traversal.gph")));
 			Graph G = new Graphm();
@@ -373,6 +360,7 @@ public class GraphTest
 		    assertEquals(out.toString(), "0 0 2 2 4 4 1 1 3 3 5 5 ");
 			    
 	  }
+	  **/
 	  
 	  @Test
 	  public void testTopSort() throws IOException {
@@ -386,7 +374,7 @@ public class GraphTest
 	 }
 	  
 	 //@Test
-	  public void testTopSortQueue() throws IOException {
+	  /** public void testTopSortQueue() throws IOException {
 			BufferedReader f;
 			//f = new BufferedReader(new InputStreamReader(new FileInputStream("testfile-topsort.gph")));
 			f = new BufferedReader(new InputStreamReader(new FileInputStream("testfile-dfs.gph")));
@@ -395,9 +383,7 @@ public class GraphTest
 			topsortQueue(G);
 			assertEquals( "0 1 2 5 3 4 6 ", out.toString());
 	}
-	  
-	
-	  
+	 **/
 	  //@Test
 		 public void testCycle() throws IOException{
 				BufferedReader f;

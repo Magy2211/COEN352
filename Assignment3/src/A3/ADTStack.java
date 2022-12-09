@@ -1,8 +1,5 @@
 package A3;
 
-//Note: this code was used from the lecture source codes posted on Moodle
-
-
 /** Stack ADT */
 public interface ADTStack<E> {
 	
