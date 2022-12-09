@@ -316,15 +316,16 @@ public class GraphTest
 	   * method, so that all the variables are cleanly initialized for
 	   * each test.
 	   */
-	  
-	/** @BeforeEach
+	static StringBuffer out;
+	
+	 @BeforeEach
 	  public void setUp()
 	  {
 	    out = new StringBuffer(100);
 	  }
 	
 	  @Test
-	  public void testConnectComponent() throws IOException {
+	  /*public void testConnectComponent() throws IOException {
 		    BufferedReader f;
 		    f = new BufferedReader(new InputStreamReader(new FileInputStream("testfile-concomp.gph")));
 		    Graph G = new Graphm();
@@ -355,7 +356,7 @@ public class GraphTest
 		    assertEquals(out.toString(), "0 0 2 2 4 4 1 1 3 3 5 5 ");
 			    
 	  }
-	  **/
+	  
 	 /** @Test
 	  public void testTopSort() throws IOException {
 			BufferedReader f;
@@ -377,8 +378,8 @@ public class GraphTest
 			topsortQueue(G);
 			assertEquals( "0 1 2 5 3 4 6 ", out.toString());
 	}
-	 **/
-	 /**
+	 
+	 
 	  //@Test
 		 public void testCycle() throws IOException{
 				BufferedReader f;
@@ -388,8 +389,8 @@ public class GraphTest
 				
 				assertEquals(isCyclic(G, 0), true);
 		}
-		 */
-	 
+		 
+	 */
 		//@Test
 	 
 		 public void testisPrerequisite() throws IOException{
