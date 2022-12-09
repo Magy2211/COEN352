@@ -76,8 +76,8 @@ class Graphm implements Graph { // Graph: Adjacency matrix
 	  boolean isPrereq; 
 	  
 	 // Algorithm 
-	  // loop through the verteces of the sourcecourse 
-	  // if the linked course corresponds to the destination course, return isPrereq = true; 
+	  // loop through the verteces of the destination course 
+	  // if the vertece corresponds to the sourcecourse , return isPrereq = true; 
 	  // else return isPrereq = false; 
 	  
 	  
