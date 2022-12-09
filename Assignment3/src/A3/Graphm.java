@@ -5,6 +5,9 @@ package A3;
     by Clifford A. Shaffer
     Copyright 2008-2011 by Clifford A. Shaffer
 */
+import java.lang.String; 
+import A3.AStack; 
+import A3.ADTStack;
 
 class Graphm implements Graph  // Graph: Adjacency matrix
 
@@ -204,13 +207,14 @@ class Graphm implements Graph  // Graph: Adjacency matrix
 
   public boolean isEdge(int i, int j) // Is (i, j) an edge?
     { return matrix[i][j] != 0; }
+ 
   
-//Set edge weight
- public void setEdge(int i, int j, int wt) {
-   assert wt!=0 : "Cannot set weight to 0";
-   if (matrix[i][j] == 0) numEdge++;
-   matrix[i][j] = wt;
- }
+  // Set edge weight
+  public void setEdge(int i, int j, int wt) {
+    assert wt!= 0 : "Cannot set weight to 0";
+    if (matrix[i][j] == 0) numEdge++;
+    matrix[i][j] = wt;
+  }
 
   public void delEdge(int i, int j) { // Delete edge (i, j)
     if (matrix[i][j] != 0) {
@@ -260,8 +264,13 @@ class Graphm implements Graph  // Graph: Adjacency matrix
 		  System.out.println("invalid Course");
 		  return false; 
 	  }
+<<<<<<< HEAD
 	  
 	 return isEdge(CourseSource,CourseDestination); 
 	  
+=======
+ 
+	 return true; 
+>>>>>>> b6f26f85cc0d6aab79f4dce8f34461892ca285f3
   }
 }
