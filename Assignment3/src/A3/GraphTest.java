@@ -6,8 +6,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import coen352.ch4.queue.*;
-import coen352.ch4.stack.*; 
+//import coen352.ch4.queue.*;
+import A3.AStack;
+import A3.ADTStack;
 
 /** Source code example for "A Practical Introduction to Data
     Structures and Algorithm Analysis, 3rd Edition (Java)" 
@@ -24,7 +25,7 @@ import java.util.*;
 public class GraphTest
    
 {
-
+	
 	static final int UNVISITED = 0;
 	static final int VISITED = 1;
 	
@@ -325,7 +326,11 @@ public class GraphTest
 	   * method, so that all the variables are cleanly initialized for
 	   * each test.
 	   */
-	  
+	 BufferedReader f; 
+	 f = new BudderedReader(new InputStreamReader(new FileInputStream("coen_course.gph")));
+	 
+	 Graphm G = new Graphm();
+	 createGraph (f, G);
 	 static StringBuffer out;
 	  
 	 @BeforeEach
