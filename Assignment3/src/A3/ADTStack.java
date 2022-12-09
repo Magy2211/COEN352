@@ -1,4 +1,4 @@
-package coen352.ch4.stack;
+package A3;
 
 /** Stack ADT */
 public interface ADTStack<E> {
