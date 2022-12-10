@@ -36,7 +36,8 @@ public class GraphTest
 			  String line = null;
 			  StringTokenizer token;
 			  boolean undirected = false;
-			  int i, v1, v2, weight;
+			  int i, weight, v1_int, v2_int; 
+			  String v1, v2; 
 			
 			  assert (line = file.readLine()) != null :
 			         "Unable to read number of vertices";
@@ -63,18 +64,21 @@ public class GraphTest
 			  // Read in edges
 			  while((line = file.readLine()) != null) {
 				token = new StringTokenizer(line);
-			    v1 = Integer.parseInt(token.nextToken());
-			    v2 = Integer.parseInt(token.nextToken());
+			    v1 = token.nextToken();
+			    v2 = token.nextToken();
 			    if (token.hasMoreTokens())
 			      weight = Integer.parseInt(token.nextToken());
 			    else // No weight given -- set at 1
 			      weight = 1;
-			    G.setEdge(v1, v2, weight);
+			    v1_int = G.getIndex(v1); 
+			    v2_int = G.getIndex(v2); 
+			    G.setEdge(v1_int, v2_int, weight);
 			    if (undirected) // Put in edge in other direction
-			      G.setEdge(v2, v1, weight);
+			      G.setEdge(v2_int, v1_int, weight);
 			  }
 			  return G;
 	}
+	
 	
 	static void Gprint(Graph G, StringBuffer out) {
 		  int i, j;
@@ -209,6 +213,7 @@ public class GraphTest
 			}
 		}
 		*/
+		 
 		
 		void graphTraverse(Graph G) {
 		  int v;
@@ -218,8 +223,7 @@ public class GraphTest
 		    if (G.getMark(v) == UNVISITED)
 		      DFS(G, v);
 		}
-		
-		
+	
 		/**
 		 *  Breadth first (queue-based) search
 		 */
@@ -265,7 +269,7 @@ public class GraphTest
 //			  printout(v);                 // PostVisit for Vertex v
 //		}
 //		
-		
+		/*
 		static void topsort(Graph G) { // Recursive topological sort
 			  for (int i=0; i<G.n(); i++)  // Initialize Mark array
 			    G.setMark(i, UNVISITED);
@@ -282,7 +286,7 @@ public class GraphTest
 			  
 			  printout(v);                 // PostVisit for Vertex v
 		}
-		
+		*/
 	
 		/**
 		 * topological sort using queue without recursion  
@@ -315,13 +319,8 @@ public class GraphTest
 	   * method, so that all the variables are cleanly initialized for
 	   * each test.
 	   */
-	 BufferedReader f; 
-	 f = new BudderedReader(new InputStreamReader(new FileInputStream("coen_course.gph")));
-	 
-	 Graphm G = new Graphm();
-	 createGraph (f, G);
-	 static StringBuffer out;
-	  
+	static StringBuffer out;
+	
 	 @BeforeEach
 	  public void setUp()
 	  {
@@ -329,7 +328,7 @@ public class GraphTest
 	  }
 	
 	  @Test
-	  public void testConnectComponent() throws IOException {
+	  /*public void testConnectComponent() throws IOException {
 		    BufferedReader f;
 		    f = new BufferedReader(new InputStreamReader(new FileInputStream("testfile-concomp.gph")));
 		    Graph G = new Graphm();
@@ -360,9 +359,8 @@ public class GraphTest
 		    assertEquals(out.toString(), "0 0 2 2 4 4 1 1 3 3 5 5 ");
 			    
 	  }
-	  **/
 	  
-	  @Test
+	 /** @Test
 	  public void testTopSort() throws IOException {
 			BufferedReader f;
 			f = new BufferedReader(new InputStreamReader(new FileInputStream("testfile-topsort.gph")));
@@ -383,15 +381,32 @@ public class GraphTest
 			topsortQueue(G);
 			assertEquals( "0 1 2 5 3 4 6 ", out.toString());
 	}
-	 **/
+	 
+	 
 	  //@Test
 		 public void testCycle() throws IOException{
 				BufferedReader f;
-				f = new BufferedReader(new InputStreamReader(new FileInputStream("testfile-spath-cycle.gph")));
+				f = new BufferedReader(new InputStreamReader(new FileInputStream("coen_course.gph")));
 				Graph G = new Graphm();
 				createGraph(f, G);
 				
 				assertEquals(isCyclic(G, 0), true);
+		}
+		 
+	 */
+		//@Test
+	 
+		 public void testisPrerequisite() throws IOException{
+				BufferedReader f;
+				f = new BufferedReader(new InputStreamReader(new FileInputStream("coen_course.gph")));
+				Graph G = new Graphm();
+				createGraph(f, G);
+			
+				assertEquals(true,G.isPrerequisite("COEN212","COEN313"), "Test failed, The course is a prerequisite even if it should not be");
+				assertEquals(true,G.isPrerequisite("COEN311","COEN316"), "Test failed, The course is a prerequisite even if it should not be");
+				assertEquals(false,G.isPrerequisite("COEN317","COEN490"), "Test failed, The course is a prerequisite even if it should not be");
+				assertEquals(false,G.isPrerequisite("COEN231","COEN346"), "Test failed, The course is a prerequisite even if it should not be");
+				
 		}
 	  
 	

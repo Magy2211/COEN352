@@ -6,11 +6,12 @@ package A3;
     Copyright 2008-2011 by Clifford A. Shaffer
 */
 import java.lang.String; 
-import A3.AStack; 
-import A3.ADTStack;
 
-class Graphm implements Graph { private static final String String = null;
-// Graph: Adjacency matrix
+
+class Graphm implements Graph  // Graph: Adjacency matrix
+
+{ 
+
   private int [][] matrix;                // The edge matrix
   private int numEdge;                   // Number of edges
   public int[] Mark;                     // The mark array
@@ -30,7 +31,7 @@ class Graphm implements Graph { private static final String String = null;
   }
   
   // function to assign each course to an index 
-  public static int getIndex(String coencourse)
+  public int getIndex(String coencourse)
   {
 	
 		int index;
@@ -238,8 +239,7 @@ class Graphm implements Graph { private static final String String = null;
 	 * @param SourceCourse
 	 * @param destinationCourse 
 	 * Algorithm: 
-	 * Assign the given course to the corresponding index 
-	 * look at the agency matrix 
+	 * Assign the given course to the corresponding index  
 	 * use isEdge to see if the number is one in the matrix, 
 	 * If the number is a one, then return true 
 	 * if not return false 
@@ -263,7 +263,7 @@ class Graphm implements Graph { private static final String String = null;
 		  System.out.println("invalid Course");
 		  return false; 
 	  }
- 
-	 return true; 
+	 return isEdge(CourseSource,CourseDestination); 
+	  
   }
 }
