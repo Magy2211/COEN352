@@ -5,7 +5,8 @@ package A3;
     by Clifford A. Shaffer
     Copyright 2008-2011 by Clifford A. Shaffer
 */
-import java.lang.String; 
+import java.lang.String;
+import java.util.ArrayList; 
 
 
 class Graphm implements Graph  // Graph: Adjacency matrix
@@ -16,6 +17,9 @@ class Graphm implements Graph  // Graph: Adjacency matrix
   private int numEdge;                   // Number of edges
   public int[] Mark;                     // The mark array
   public int[] Count;
+  
+  static final int UNVISITED = 0;
+  static final int VISITED = 1;
   
   
   public Graphm() {}
@@ -186,7 +190,161 @@ class Graphm implements Graph  // Graph: Adjacency matrix
 		}
 		return index;
 	}
+  public String getCourse(int Index)
+  {
+	
+		String Course;
+		switch (Index)
+		{
+			case 0:
+				Course = "MATH204";
+				break;
 
+			case 1:
+				Course = "COEN243";
+				break;
+
+			case 2:
+				Course = "COEN212";
+				break;
+
+			case 3:
+				Course = "COEN231";
+				break;
+
+			case 4:
+				Course = "COEN311";
+				break;
+
+			case 5:
+				Course = "COEN313";
+				break;
+
+			case 6:
+				Course = "COEN346";
+				break;
+
+			case 7:
+				Course = "COEN352";
+				break;
+
+			case 8:
+				Course = "ENGR290";
+				break;
+
+			case 9:
+				Course = "ELEC311";
+				break;
+
+			case 10:
+				Course = "COEN317";
+				break;
+
+			case 11:
+				Course = "COEN320";
+				break;
+
+			case 12:
+				Course = "SOEN341";
+				break;
+
+			case 13:
+				Course = "ELEC372";
+				break;
+
+			case 14:
+				Course = "COEN244";
+				break;
+
+			case 15:
+				Course = "COEN366";
+				break;
+
+			case 16:
+				Course = "ENGR301";
+				break;
+
+			case 17:
+				Course = "ENGR371";
+				break;
+
+			case 18:
+				Course = "COEN390";
+				break;
+
+			case 19:
+				Course = "COEN466";
+				break;
+
+			case 20:
+				Course = "COEN451";
+				break;
+
+			case 21:
+				Course = "COEN316";
+				break;
+
+			case 22:
+				Course = "COEN413";
+				break;
+
+			case 23:
+				Course = "COEN424";
+				break;
+
+			case 24:
+				Course = "COEN432";
+				break;
+
+			case 25:
+				Course = "COEN434";
+				break;
+
+			case 26:
+				Course = "COEN415";
+				break;
+
+			case 27:
+				Course = "COEN433";
+				break;
+
+			case 28:
+				Course = "COEN421";
+				break;
+
+			case 29:
+				Course = "COEN447";
+				break;
+
+			case 30:
+				Course = "COEN422";
+				break;
+
+			case 31:
+				Course = "COEN448";
+				break;
+
+			case 32:
+				Course = "COEN490";
+				break;
+
+			case 33:
+				Course = "COEN446";
+				break;
+				
+			case 34:
+				Course = "COEN498";
+				break;
+				
+			case 35:
+				Course = "DEPTMNT";
+				break;
+
+			default:
+				Course = null; 
+		}
+		return Course;
+	}
   public int n() { return Mark.length; } // # of vertices
 
   public int e() { return numEdge; }     // # of edges
@@ -265,5 +423,56 @@ class Graphm implements Graph  // Graph: Adjacency matrix
 	  }
 	 return isEdge(CourseSource,CourseDestination); 
 	  
+  }
+  
+  public String [] getPrerequisites(String CourseCode) {
+	  
+	  ArrayList<String> prereqs = new ArrayList<>();
+	  int CourseIndex = getIndex(CourseCode);
+	  
+	  for(int j=0; j<this.n();j++)
+	  {
+		  if(this.isEdge(j,CourseIndex)) {
+			  prereqs.add(getCourse(j));
+		  }
+			  
+	  }
+	  
+	  String [] result = new String [prereqs.size()];
+	  for(int j=0; j <result.length; j++) {
+		  result[j] = prereqs.get(j);
+	  }
+	  
+	  return result; 
+  }
+
+  public String getPrerequisitePath(String CourseCode) {
+	  
+	  
+	  String path = null;
+	  final String[] prereqs = getPrerequisites(CourseCode);
+	  for(int i=0; i< prereqs.length;i++) {
+		  if(getMark(i) == UNVISITED) {
+			  getPrerequisitePath(getCourse(i));
+		  }
+	  }
+	  
+	  if(getMark(getIndex(CourseCode)) == UNVISITED) {
+		  
+		  setMark(getIndex(CourseCode),VISITED);
+		  
+		  path = path + CourseCode + ",";
+		  
+		  
+		  for (int currentNeighbour = first(getIndex(CourseCode)); currentNeighbour < this.n(); currentNeighbour = next(getIndex(CourseCode), currentNeighbour)) {
+			  
+			  if(getMark(currentNeighbour) == UNVISITED) {
+				  getPrerequisitePath(getCourse(currentNeighbour));
+			  }
+		  }
+	  }
+	  
+	  return path;
+	 
   }
 }

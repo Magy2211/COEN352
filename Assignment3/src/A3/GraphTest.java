@@ -409,6 +409,16 @@ public class GraphTest
 				
 		}
 	  
+	  public void testGetPrerequisitePath() throws IOException{
+		  
+		  	BufferedReader f;
+			f = new BufferedReader(new InputStreamReader(new FileInputStream("coen_course.gph")));
+			Graph G = new Graphm();
+			createGraph(f, G);
+			
+			assertEquals("MATH204,COEN212",G.getPrerequisitePath("COEN212"),"TEST FAILED");
+	  }
+	  
 	
 
 }
