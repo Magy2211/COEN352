@@ -36,7 +36,8 @@ public class GraphTest
 			  String line = null;
 			  StringTokenizer token;
 			  boolean undirected = false;
-			  int i, v1, v2, weight;
+			  int i, weight, v1_int, v2_int; 
+			  String v1, v2; 
 			
 			  assert (line = file.readLine()) != null :
 			         "Unable to read number of vertices";
@@ -63,15 +64,17 @@ public class GraphTest
 			  // Read in edges
 			  while((line = file.readLine()) != null) {
 				token = new StringTokenizer(line);
-			    v1 = Integer.parseInt(token.nextToken());
-			    v2 = Integer.parseInt(token.nextToken());
+			    v1 = token.nextToken();
+			    v2 = token.nextToken();
 			    if (token.hasMoreTokens())
 			      weight = Integer.parseInt(token.nextToken());
 			    else // No weight given -- set at 1
 			      weight = 1;
-			    G.setEdge(v1, v2, weight);
+			    v1_int = G.getIndex(v1); 
+			    v2_int = G.getIndex(v2); 
+			    G.setEdge(v1_int, v2_int, weight);
 			    if (undirected) // Put in edge in other direction
-			      G.setEdge(v2, v1, weight);
+			      G.setEdge(v2_int, v1_int, weight);
 			  }
 			  return G;
 	}

@@ -19,6 +19,6 @@ interface Graph {                // Graph class ADT
    public void setMark(int v, int val); // Set Mark for v
   public int getMark(int v);           // Get Mark for v
   public boolean isPrerequisite(String SourceCourse, String destinationCourse); // determines if the course is a prereq of the other 
-  
+  public int getIndex(String coencourse); // getting the index
 }
 

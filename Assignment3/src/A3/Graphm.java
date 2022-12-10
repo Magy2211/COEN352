@@ -31,7 +31,7 @@ class Graphm implements Graph  // Graph: Adjacency matrix
   }
   
   // function to assign each course to an index 
-  public static int getIndex(String coencourse)
+  public int getIndex(String coencourse)
   {
 	
 		int index;
