@@ -8,6 +8,10 @@ package A3;
 import java.lang.String;
 import java.util.ArrayList; 
 
+import A3.ADTStack;
+import A3.AStack;
+
+import java.util.Stack;
 
 class Graphm implements Graph  // Graph: Adjacency matrix
 
@@ -17,6 +21,7 @@ class Graphm implements Graph  // Graph: Adjacency matrix
   private int numEdge;                   // Number of edges
   public int[] Mark;                     // The mark array
   public int[] Count;
+  public boolean END = false;
   
   static final int UNVISITED = 0;
   static final int VISITED = 1;
@@ -425,54 +430,107 @@ class Graphm implements Graph  // Graph: Adjacency matrix
 	  
   }
   
-  public String [] getPrerequisites(String CourseCode) {
+  public String []  getPrerequisites(String CourseCode) {
 	  
-	  ArrayList<String> prereqs = new ArrayList<>();
+	  String [] result = new String [this.n()];
+	  
+	  int counter =0;
 	  int CourseIndex = getIndex(CourseCode);
-	  
-	  for(int j=0; j<this.n();j++)
+	  int index = 0;
+	  for(int j=0; j< n();j++)
 	  {
-		  if(this.isEdge(j,CourseIndex)) {
-			  prereqs.add(getCourse(j));
-		  }
+		  if(this.isEdge(j, CourseIndex)) {
+			  result[index] = getCourse(j);
+			  index++;
 			  
+		  }
+			
 	  }
 	  
-	  String [] result = new String [prereqs.size()];
-	  for(int j=0; j <result.length; j++) {
-		  result[j] = prereqs.get(j);
+	  for(int i =0; i<result.length ;i++) {
+		  
+		  if(result[i] != null) {
+			  counter++;
+		  }
+		  
 	  }
 	  
-	  return result; 
+	  String[] returned = new String[counter];
+	  
+	  for(int i=0; i<counter;i++) {
+		  
+		  returned[i] = result[i];
+	  }
+	  return returned; 
   }
 
   public String getPrerequisitePath(String CourseCode) {
 	  
+	  Stack <String> stack = new Stack<> ();
+	  Stack<String>  path = new Stack<>();
 	  
-	  String path = null;
-	  final String[] prereqs = getPrerequisites(CourseCode);
-	  for(int i=0; i< prereqs.length;i++) {
-		  if(getMark(i) == UNVISITED) {
-			  getPrerequisitePath(getCourse(i));
+	  int counter =0;
+	  
+	  stack.push(CourseCode);
+	  path.push(CourseCode);
+	  
+	  String ret_path = "";
+
+	  while(!stack.empty()) {
+		
+		  
+		  String visiting = stack.pop();
+		  
+		  String [] prereqs = getPrerequisites(visiting);
+		  
+		  for(String p: prereqs) {
+			  if(getMark(getIndex(p)) == UNVISITED) {
+				  getPrerequisitePath(p);
+			  }
+			  counter++;
+			  if(counter == prereqs.length)
+			  {
+				  END = true;
+			  }
 		  }
-	  }
-	  
-	  if(getMark(getIndex(CourseCode)) == UNVISITED) {
-		  
-		  setMark(getIndex(CourseCode),VISITED);
-		  
-		  path = path + CourseCode + ",";
-		  
-		  
-		  for (int currentNeighbour = first(getIndex(CourseCode)); currentNeighbour < this.n(); currentNeighbour = next(getIndex(CourseCode), currentNeighbour)) {
+		  if(prereqs != null) {
 			  
-			  if(getMark(currentNeighbour) == UNVISITED) {
-				  getPrerequisitePath(getCourse(currentNeighbour));
+			  for(int i=0; i<prereqs.length;i++) {
+				  
+			
+				  
+				  if(getMark(getIndex(prereqs[i])) == UNVISITED){
+					  path.push(prereqs[i]);
+					  stack.push(prereqs[i]);
+					  setMark(getIndex(prereqs[i]),VISITED);
+				 }
+				 
+				  
 			  }
 		  }
 	  }
 	  
-	  return path;
-	 
+	  String temp;
+	  while(!path.empty()) {
+		  
+		  for(int i = 0; i< path.size();i++)
+		  {
+			  temp = path.pop();
+			  if(!ret_path.contains(temp)) {
+				  ret_path += temp;
+				  ret_path += " ";
+			  }
+				  
+		  }
+	  }
+	  
+	  if(END) {
+		  for(int i=0; i< n();i++)
+		   {
+			setMark(i,UNVISITED);
+		   }
+	  }
+
+	  return ret_path; 
   }
 }

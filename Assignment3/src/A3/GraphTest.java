@@ -177,143 +177,7 @@ public class GraphTest
 			 return false;
 		 }
 		
-		/*
-		static void DFS(Graph G, int start) {	
-			
-			ADTStack<Integer> stack = new AStack<Integer>(G.n());
-			stack.push(start);
-		
-			while(stack.length()>0) {
-				int v = stack.topValue();
-				stack.pop();
-				PreVisit(G, v);
-				G.setMark(v, VISITED);
-				int temp = v; 
-				for (int w = G.first(temp); w < G.n(); w = G.next(temp,w)) {
-				    if (G.getMark(w) == UNVISITED) { // Put next to stack
-				    	
-				    	stack.push(w);
-				    	G.setMark(w, VISITED);
-				    	
-				    	int k = G.first(w); 
-				    	while(k<G.n()) {
-				    		 if (G.getMark(k) == UNVISITED) {
-				    			 G.setMark(k, VISITED);
-				    			 stack.push(k);
-				    			 temp = k;
-				    			 break;
-				    		 }
-				    		 k = G.next(w, k);
-				    	}
-				    	
-				    	
-				    }
-				 }
-				 PostVisit(G, v);
-			}
-		}
-		*/
-		 
-		
-		void graphTraverse(Graph G) {
-		  int v;
-		  for (v=0; v<G.n(); v++)
-		    G.setMark(v, UNVISITED); // Initialize 
-		  for (v=0; v<G.n(); v++)
-		    if (G.getMark(v) == UNVISITED)
-		      DFS(G, v);
-		}
 	
-		/**
-		 *  Breadth first (queue-based) search
-		 */
-		/**
-		static void BFS(Graph G, int start) {
-		  ADTQueue<Integer> Q = new AQueue<Integer>(G.n());
-		  Q.enqueue(start);
-		  G.setMark(start, VISITED);
-		  
-		  while (Q.length() > 0) {    // Process each vertex on Q
-		    int v = Q.dequeue();
-		    PreVisit(G, v);           // Take appropriate action
-		    for (int w = G.first(v); w < G.n(); w = G.next(v, w))
-		      if (G.getMark(w) == UNVISITED) { // Put neighbors on Q
-		        G.setMark(w, VISITED);
-		        Q.enqueue(w);
-		      }
-		    PostVisit(G, v);          // Take appropriate action
-		  }
-		}
-		*/ 
-		
-		static void printout(int v) {
-			  out.append(v + " ");
-		}
-		/**
-		 * topological sort with recursion 
-		 */
-//		static void topsort(Graph G) { // Recursive topological sort
-//			  for (int i=0; i<G.n(); i++)  // Initialize Mark array
-//			    G.setMark(i, UNVISITED);
-//			  for (int i=0; i<G.n(); i++)  // Process all vertices
-//			    if (G.getMark(i) == UNVISITED)
-//			      tophelp(G, i);           // Recursive helper function
-//		}
-		
-		// Topsort helper function
-//		static void tophelp(Graph G, int v) {
-//			  G.setMark(v, VISITED);
-//			  for (int w = G.first(v); w < G.n(); w = G.next(v, w))
-//			    if (G.getMark(w) == UNVISITED)
-//			      tophelp(G, w);
-//			  printout(v);                 // PostVisit for Vertex v
-//		}
-//		
-		/*
-		static void topsort(Graph G) { // Recursive topological sort
-			  for (int i=0; i<G.n(); i++)  // Initialize Mark array
-			    G.setMark(i, UNVISITED);
-			  for (int i=0; i<G.n(); i++)  // Process all vertices
-			    if (G.getMark(i) == UNVISITED)
-			      tophelp(G, i);           // Recursive helper function
-		}
-
-		static void tophelp(Graph G, int v) {
-			  G.setMark(v, VISITED);
-			  for (int w = G.first(v); w < G.n(); w = G.next(v, w))
-			    if (G.getMark(w) == UNVISITED)
-			      tophelp(G, w);
-			  
-			  printout(v);                 // PostVisit for Vertex v
-		}
-		*/
-	
-		/**
-		 * topological sort using queue without recursion  
-		 */
-		/** static void topsortQueue(Graph G) { // Topological sort: Queue
-			  ADTQueue<Integer> Q = new AQueue<Integer>(G.n());
-			  int[] Count = new int[G.n()];
-			  int v;
-			  for (v=0; v<G.n(); v++) Count[v] = 0; // Initialize
-			  
-			  for (v=0; v<G.n(); v++)      // Process every edge
-			    for (int w = G.first(v); w < G.n(); w = G.next(v, w))
-			       Count[w]++;       // Add to v2's prereq count
-			  	  
-			  for (v=0; v<G.n(); v++)      // Initialize Queue
-			    if (Count[v] == 0)         // V has no prerequisites
-			      Q.enqueue(v);
-			  while (Q.length() > 0) {     // Process the vertices
-			    v = Q.dequeue().intValue();
-			    printout(v);               // PreVisit for Vertex V
-			    for (int w = G.first(v); w < G.n(); w = G.next(v, w)) {
-			      Count[w]--;              // One less prerequisite
-			      if (Count[w] == 0)       // This vertex is now free
-			        Q.enqueue(w);
-			    }
-			  }
-			}
 	  /**
 	   * This method is automatically called once before each test case
 	   * method, so that all the variables are cleanly initialized for
@@ -327,88 +191,21 @@ public class GraphTest
 	    out = new StringBuffer(100);
 	  }
 	
-	  @Test
-	  /*public void testConnectComponent() throws IOException {
-		    BufferedReader f;
-		    f = new BufferedReader(new InputStreamReader(new FileInputStream("testfile-concomp.gph")));
-		    Graph G = new Graphm();
-		    createGraph(f, G);
-		    concom(G);
-		    assertEquals(out.toString(), "0 1 1 2 2 2 3 2 4 1 5 2 ");
-	  }
 	  
-	  @Test
-	  public void testDFS() throws IOException {
+	@Test
+	 public void testisPrerequisite() throws IOException{
 			BufferedReader f;
-			//f = new BufferedReader(new InputStreamReader(new FileInputStream("testfile-traversal.gph")));
-			f = new BufferedReader(new InputStreamReader(new FileInputStream("testfile-dfs.gph")));
+			f = new BufferedReader(new InputStreamReader(new FileInputStream("coen_course.gph")));
 			Graph G = new Graphm();
 			createGraph(f, G);
-			DFS(G,0);
 		
-			assertEquals( "0pre 1pre 3pre 4pre 5pre 5pos 4pos 3pos 1pos 2pre 2pos 0pos ", out.toString());
-	  }
-	  
-	  //@Test
-	  /** public void testBFS() throws IOException {
-			BufferedReader f;
-			f = new BufferedReader(new InputStreamReader(new FileInputStream("testfile-traversal.gph")));
-			Graph G = new Graphm();
-			createGraph(f, G);
-			BFS(G, 0);
-		    assertEquals(out.toString(), "0 0 2 2 4 4 1 1 3 3 5 5 ");
-			    
-	  }
-	  
-	 /** @Test
-	  public void testTopSort() throws IOException {
-			BufferedReader f;
-			f = new BufferedReader(new InputStreamReader(new FileInputStream("testfile-topsort.gph")));
-			//f = new BufferedReader(new InputStreamReader(new FileInputStream("testfile-dfs.gph")));
-			Graph G = new Graphm();
-			createGraph(f, G);
-			topsort(G);
-			assertEquals( "6 4 3 5 1 2 0 ", out.toString());
-	 }
-	  
-	 //@Test
-	  /** public void testTopSortQueue() throws IOException {
-			BufferedReader f;
-			//f = new BufferedReader(new InputStreamReader(new FileInputStream("testfile-topsort.gph")));
-			f = new BufferedReader(new InputStreamReader(new FileInputStream("testfile-dfs.gph")));
-			Graph G = new Graphm();
-			createGraph(f, G);
-			topsortQueue(G);
-			assertEquals( "0 1 2 5 3 4 6 ", out.toString());
-	}
-	 
-	 
-	  //@Test
-		 public void testCycle() throws IOException{
-				BufferedReader f;
-				f = new BufferedReader(new InputStreamReader(new FileInputStream("coen_course.gph")));
-				Graph G = new Graphm();
-				createGraph(f, G);
-				
-				assertEquals(isCyclic(G, 0), true);
-		}
-		 
-	 */
-		//@Test
-	 
-		 public void testisPrerequisite() throws IOException{
-				BufferedReader f;
-				f = new BufferedReader(new InputStreamReader(new FileInputStream("coen_course.gph")));
-				Graph G = new Graphm();
-				createGraph(f, G);
+			assertEquals(true,G.isPrerequisite("COEN212","COEN313"), "Test failed, The course is a prerequisite even if it should not be");
+			assertEquals(true,G.isPrerequisite("COEN311","COEN316"), "Test failed, The course is a prerequisite even if it should not be");
+			assertEquals(false,G.isPrerequisite("COEN317","COEN490"), "Test failed, The course is a prerequisite even if it should not be");
+			assertEquals(false,G.isPrerequisite("COEN231","COEN346"), "Test failed, The course is a prerequisite even if it should not be");
 			
-				assertEquals(true,G.isPrerequisite("COEN212","COEN313"), "Test failed, The course is a prerequisite even if it should not be");
-				assertEquals(true,G.isPrerequisite("COEN311","COEN316"), "Test failed, The course is a prerequisite even if it should not be");
-				assertEquals(false,G.isPrerequisite("COEN317","COEN490"), "Test failed, The course is a prerequisite even if it should not be");
-				assertEquals(false,G.isPrerequisite("COEN231","COEN346"), "Test failed, The course is a prerequisite even if it should not be");
-				
-		}
-	  
+	}
+	 @Test
 	  public void testGetPrerequisitePath() throws IOException{
 		  
 		  	BufferedReader f;
@@ -416,9 +213,10 @@ public class GraphTest
 			Graph G = new Graphm();
 			createGraph(f, G);
 			
-			assertEquals("MATH204,COEN212",G.getPrerequisitePath("COEN212"),"TEST FAILED");
+			assertEquals("MATH204 COEN231 COEN212 COEN313 ",G.getPrerequisitePath("COEN313"),"TEST FAILED");
+			assertEquals("MATH204 COEN212 COEN243 COEN244 COEN231 COEN352 COEN311 COEN346 ",G.getPrerequisitePath("COEN346"),"TEST FAILED");
+			assertEquals("MATH204 COEN212 COEN243 COEN244 COEN231 ENGR290 COEN352 COEN311 COEN390 ENGR371 ENGR301 SOEN341 COEN490 ",G.getPrerequisitePath("COEN490"),"TEST Failed");
 	  }
 	  
-	
 
 }
